@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ls_kyhan', function (Blueprint $table) {
             $table->id();
-            $table->bigint('kyhan_id')->unsigned();
+            $table->bigInteger('kyhan_id')->unsigned();
             $table->float('laisuatcu');
             $table->float('laisuatmoi');
             $table->timestamps();

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->default('user');
+            $table->string('avatar')->default('https://avatarfiles.alphacoders.com/119/119959.jpg');
             $table->rememberToken();
             $table->timestamps();
         });
