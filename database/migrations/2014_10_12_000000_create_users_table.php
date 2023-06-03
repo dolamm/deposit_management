@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('fullname');
             $table->string('CMND/CCCD')->unique();
             $table->string('phone')->unique();
-            $table->string('address');
-            $table->string('birthday');
+            $table->string('address')->default('bank master');
+            $table->date('birthday')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
