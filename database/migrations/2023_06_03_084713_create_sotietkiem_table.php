@@ -17,9 +17,9 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
             $table->datetime('ngaydaohan');
-            $table->integer('sotiengui');
-            $table->integer('sodu');
-            $table->integer('tienlai')->default(0);
+            $table->float('sotiengui');
+            $table->float('sodu');
+            $table->float('tienlai')->default(0);
             $table->datetime('ngaydongso')->nullable();
         });
     }
