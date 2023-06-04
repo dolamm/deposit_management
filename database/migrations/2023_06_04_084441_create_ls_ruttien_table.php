@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('ls_ruttien', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('sotietkiem_id')->unsigned();
-            $table->float('soducu');
-            $table->float('sotien');
-            $table->float('sodumoi');
+            $table->float('soducu',20,3);
+            $table->float('sotien',20,3);
+            $table->float('sodumoi',20,3);
             $table->timestamps();
         });
     }

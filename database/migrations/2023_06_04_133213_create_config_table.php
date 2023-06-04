@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ls_guitien', function (Blueprint $table) {
+        Schema::create('config', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('sotietkiem_id')->unsigned();
-            $table->float('soducu',20,3);
-            $table->float('sotien',20,3);
-            $table->float('sodumoi',20,3);
+            $table->string('key')->unique();
+            $table->string('tengiatri');
+            $table->float('giatri',20,3);
+            $table->string('mota')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ls_guitien');
+        Schema::dropIfExists('config');
     }
 };

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('ls_tienlai', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('sotietkiem_id')->unsigned();
-            $table->float('soducu');
-            $table->integer('tienlai');
-            $table->float('sodumoi');
+            $table->float('soducu', 20, 3);
+            $table->float('tienlai', 20, 3);
+            $table->float('sodumoi', 20, 3);
             $table->timestamps();
         });
     }
