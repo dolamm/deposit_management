@@ -1,0 +1,6 @@
+echo "table name: "
+read tableName
+echo "model name: "
+read modelName
+php artisan make:migration create_${tableName,,}_table
+php artisan make:model ${modelName}
