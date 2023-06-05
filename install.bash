@@ -1,3 +1,4 @@
+echo "Installing Project..."
 composer install
 npm i
 npm run build

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Livewire\SettingConfig;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,6 @@ Auth::routes();
 Route::get('/test', function() {
     return view('layouts.admin');
 });
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+//add middleware
+Route::get('/config', [SettingConfig::class, 'render']);
