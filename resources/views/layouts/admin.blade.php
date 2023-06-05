@@ -93,7 +93,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="{{route('config')}}">Settings</a></li>
+                        @can('check-role-admin')<li><a class="dropdown-item" href="{{route('config')}}">Settings</a></li>@endcan
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">

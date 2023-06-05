@@ -11,7 +11,7 @@ class SettingConfig extends Component
 {
     public function render()
     {
-        if(Gate::allows('check-admin-role', Auth::user())){
+        if(Gate::allows('check-role-admin')){
             $config = Config::all();
             return view('livewire.admin.setting-config', compact('config'));
         }

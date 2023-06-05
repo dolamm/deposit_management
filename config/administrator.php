@@ -9,7 +9,7 @@
     */
 return [
     'fullname' =>'administrator',
-    'email' => 'admin@masterbank.com',
+    'email' => 'admin@superbank.com',
     'password' => '12345678',
     'role' => 'admin',
     'CMND/CCCD' => "123465789",

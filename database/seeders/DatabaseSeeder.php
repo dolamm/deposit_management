@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(AdminUser::class);
         $this->call(DefaultSetting::class);
+        $this->call(GroupUser::class);
+        $this->call(GenerateUser::class);
     }
 }
