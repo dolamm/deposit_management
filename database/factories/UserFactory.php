@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'birthday' => fake()->date(),
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
-            'role_id' => 3,
+            'role_id' => fake()->numberBetween(2, 3),
             'CMND/CCCD' => fake()->unique()->numberBetween(21, 40),
             'avatar' => fake()->randomElement($avatar),
         ];

@@ -30,24 +30,23 @@ class UpdatePermission extends Command
     {
         $data = config('permission');
         foreach ($data as $key => $item) {
-            //check permission exist
-            $permission = Permission::where('name', $item['name'])->first();
-            if (empty($permission)) {
-                $permission = new Permission();
-                $permission->name = $item['name'];
-                $permission->title = $item['title'];
-                $permission->description = $item['description'];
-                $permission->save();
-                foreach ($item['permission'] as $value) {
-                    //get role id
-                    $role = Role::where('name', $value)->first();
-                    //get permission id
-                    $permission = Permission::where('name', $item['name'])->first();
-                    //create role permission
-                    $rolePermission = new RolePermission();
-                    $rolePermission->role_id = $role->id;
-                    $rolePermission->permission_id = $permission->id;
-                    $rolePermission->save();
+            foreach ($item as $per) {
+                //check if permission exist
+                $permission = Permission::where('name', $per['name'])->first();
+                if (empty($permission)) {
+                    Permission::create([
+                        'name' => $per['name'],
+                        'description' => $per['description'],
+                        'title' => $per['title'],
+                    ]);
+                    foreach ($per['permission'] as $role) {
+                        $role = Role::where('name', $role)->first();
+                        $permission = Permission::where('name', $per['name'])->first();
+                        RolePermission::create([
+                            'role_id' => $role->id,
+                            'permission_id' => $permission->id,
+                        ]);
+                    }
                 }
             }
         }

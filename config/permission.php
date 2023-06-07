@@ -1,5 +1,6 @@
 <?php 
 use App\Http\Livewire\SysConfig;
+use App\Http\Livewire\ListUser;
     /*
     thiet lap quyen nguoi dung trong he thong
     default: 
@@ -9,4 +10,5 @@ use App\Http\Livewire\SysConfig;
     */
     return [
         1 => SysConfig::permission,
+        2 => ListUser::permission,
     ];
