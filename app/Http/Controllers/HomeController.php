@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\NotificationController;
-
 class HomeController extends Controller
 {
     /**
@@ -24,7 +22,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        NotificationController::sendNotify('success', 'Đăng nhập thành công');
-        return view('home');
+        return redirect(route('home'));
     }
 }

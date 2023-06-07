@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\SettingConfig;
-
+use App\Http\Livewire\SysConfig;
+use App\Http\Controllers\RouteController;
+use Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,8 @@ Auth::routes();
 Route::get('/test', function() {
     return view('layouts.admin');
 });
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('root');
 //add middleware
-Route::get('/config', [SettingConfig::class, 'render']);
+Route::get('/config/{component}', [RouteController::class, 'index']);
+Route::get('/config/sys-config', [RouteController::class, 'index'])->name('config');
+Route::get('/config/home', [RouteController::class, 'index'])->name('home');

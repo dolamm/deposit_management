@@ -17,8 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    const ROLE_ADMIN = 'admin';
-    const ROLE_USER = 'user';
+    const ROLE_ADMIN = 1;
+    const ROLE_USER = 2;
     
     protected $fillable = [
         'fullname',
@@ -49,8 +49,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function isAdmin(): bool
-    {
-        return $this->role == self::ROLE_ADMIN;
+    public function userRole() {
+        return $this->role_id; 
+    }
+
+    public function role() {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+    public function hasPermission($permission) : bool{
+        $check = $this->role->permissions()->where('name', $permission)->first();
+        if(!empty($check)){
+            return true;
+        }
+        return false;
     }
 }

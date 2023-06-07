@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role')->default('user');
+            $table->bigInteger('role_id')->unsigned()->default(3);
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->string('avatar')->default('https://avatarfiles.alphacoders.com/119/119959.jpg');
             $table->rememberToken();
             $table->timestamps();
