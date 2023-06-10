@@ -21,7 +21,7 @@ return new class extends Migration
             $table->float('sotiengui');
             $table->float('sodu');
             $table->float('tienlai')->default(0);
-            $table->datetime('ngaydongso')->nullable();
+            $table->datetime('ngaydongso')->nullable()->default(null);
         });
     }
 

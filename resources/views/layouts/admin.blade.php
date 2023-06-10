@@ -91,8 +91,16 @@
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
                         </li>
                         <li>
-                            <a href="{{route('config')}}" class="nav-link px-0 align-middle" class="nav-link px-0 align-middle ">
+                            <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
                                 <i class="bi-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">System Setting</span></a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="{{route('config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">system setting</span> 1</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('edit-permission')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">permission</span> 2</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                     <hr>

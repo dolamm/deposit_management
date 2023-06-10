@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
             //quyen xem man hinh & quyen thao tac
             foreach (Permission::all() as $permission) {
                 Gate::define($permission->name, function (User $user) use ($permission) {
-                    return $user->hasPermission($permission->name);
+                    return $user->hasPermission($permission->name) || $user->hasPermission(Role::master_permission);
                 });
             }
         }

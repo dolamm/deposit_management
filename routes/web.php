@@ -16,8 +16,8 @@ use App\Http\Controllers\RouteController;
 */
 
 Auth::routes();
-Route::get('/test', function() {
-    return view('layouts.admin');
+Route::get('/homepage', function() {
+    return view('home');
 });
 Route::get('/', [HomeController::class, 'index'])->name('root');
 //add middleware
@@ -25,3 +25,4 @@ Route::get('/{component}', [RouteController::class, 'index']);
 Route::get('/sys-config', [RouteController::class, 'index'])->name('config');
 Route::get('/home', [RouteController::class, 'index'])->name('home');
 Route::get('/list-user', [RouteController::class, 'index'])->name('list-user');
+Route::get('/edit-permission', [RouteController::class, 'index'])->name('edit-permission');

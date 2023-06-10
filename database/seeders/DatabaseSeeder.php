@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GenerateUser::class);
         $this->call(DefaultPermission::class);
         $this->call(DefaultSetting::class);
+        $this->call(AccountHS::class);
     }
 }

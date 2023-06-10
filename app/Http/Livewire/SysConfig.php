@@ -37,26 +37,27 @@ class SysConfig extends Component
     }
     public function mount()
     {
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Welcome to Laravel 8 Livewire CRUD Tutorial']);
         $this->config = Config::all();
     }
 
-    protected $rule = [
-        'value.*.giatri' => 'required|min:0',
+    protected $rules = [
+        'value.*.giatri' => 'required|min:1',
     ];
 
-    protected $messge = [
+    protected $messages = [
         'value.*.giatri.required' => 'Gia tri khong duoc de trong',
-        'value.*.giatri.min' => 'Gia tri phai lon hon 0',
+        'value.*.giatri.min' => 'Gia tri phai lon hon 1',
     ];
     public function update($key)
     {
+        // $this->validate();
         if (Gate::allows('sys-config-update')) {
             $value = $this->value[$key]['giatri'];
             $config = Config::where('key', $key)->first();
             $config->giatri = $value;
             $config->save();
-            $this->mount();
+            $this->config = Config::all();
+            $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Cập nhật ' . $config->tengiatri . ' thành công!']);
         }
         else {
             $this->dispatchBrowserEvent(

@@ -10,21 +10,12 @@
     @endif
     @endforeach
   </ul>
-  <div class="tab-content" id="myTabContent">
-    @foreach($listRole as $role)
-    <div class="tab-pane fade @if($role->id == $currentRole) show active @endif" id="{{$role->name}}" role="tabpanel" aria-labelledby="home-tab">
+    @foreach($listRole as $index => $role)
+    <div class="tab-pane fade @if($role->id == $currentRole) show active @endif" id="{{$role->name}}" role="tabpane{{$index}}" aria-labelledby="{{$role->name}}-tab">
       <!-- display user list -->
       <div class="container-xl">
         <div class="table-responsive">
           <div class="table-wrapper">
-            <div class="table-title">
-              <div class="row">
-                <!-- <div class="col-sm-7">
-                  <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
-                  <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i> <span>Export to Excel</span></a>
-                </div> -->
-              </div>
-            </div>
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
@@ -47,7 +38,7 @@
                   <td>
                     <select class="form-select" aria-label="Default select example" wire:change="updateUserRole({{$user->id}},$event.target.value)">
                       @foreach($listRole as $role2)
-                      @if($user->role_id <= $role2->id)
+                      @if(Auth::user()->role_id <= $role2->id)
                         <option value="{{$role2->id}}" @if($user->role_id == $role2->id) selected @endif>{{$role2->title}}</option>
                         @endif
                         @endforeach
@@ -82,7 +73,6 @@
           </div>
         </div>
       </div>
-
     </div>
     @endforeach
   </div>

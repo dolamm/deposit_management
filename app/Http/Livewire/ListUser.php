@@ -11,17 +11,23 @@ use function PHPSTORM_META\type;
 class ListUser extends Component
 {
     const permission = [
-        'delete-user' => [
-            'title' => 'Xóa người dùng',
-            'description' => 'Xóa người dùng',
-            'name' => 'delete-user',
-            'permission' => ['admin'],
+        'create-user' =>[
+            'title' => 'Thêm người dùng',
+            'description' => 'Thêm người dùng',
+            'name' => 'create-user',
+            'permission' => ['admin', 'officer'],
         ],
         'update-user-role' => [
             'title' => 'Cập nhật vai trò người dùng',
             'description' => 'Cập nhật vai trò người dùng',
             'name' => 'update-user-role',
             'permission' => ['admin', 'officer'],
+        ],
+        'delete-user' => [
+            'title' => 'Xóa người dùng',
+            'description' => 'Xóa người dùng',
+            'name' => 'delete-user',
+            'permission' => ['admin'],
         ],
     ];
     public $listUser;
@@ -33,6 +39,7 @@ class ListUser extends Component
         $this->listUser = User::where('role_id', 3)->get();
         $this->currentRole = 3;
     }
+
     public function render()
     {
         return view('livewire.listuser.list-user');
@@ -43,6 +50,7 @@ class ListUser extends Component
         $this->currentRole = $role_id;
         $this->listUser = User::where('role_id', $role_id)->get();
     }
+
     public function updateUserRole($user_id, $role_id)
     {
         if (Gate::allows('update-user-role')) {

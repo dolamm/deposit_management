@@ -2,11 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\AccountHistory;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-
+use App\Observers\AccountObserver;
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -35,4 +36,11 @@ class EventServiceProvider extends ServiceProvider
     {
         return false;
     }
+
+    // trigger
+    protected $observers = [
+        AccountHistory::class => [
+            AccountObserver::class,
+        ],
+    ];
 }

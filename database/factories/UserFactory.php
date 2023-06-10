@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'fullname' => fake()->name(),
             'email' => 'user' . Str(fake()->unique()->numberBetween(1, 10)) . '@gmail.com',
             'email_verified_at' => now(),
-            'phone' => fake()->phoneNumber(),
+            'phone' => '0' . fake()->unique()->numberBetween(100000000, 999999999),
             'address' => fake()->address(),
             'birthday' => fake()->date(),
             'password' => Hash::make('12345678'),
