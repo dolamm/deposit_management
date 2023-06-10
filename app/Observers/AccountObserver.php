@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\AccountHistory;
 use App\Models\BankAccount;
+
 class AccountObserver
 {
     /**
@@ -14,7 +15,11 @@ class AccountObserver
         //update old balance and new balance
         $account = BankAccount::where('account_number', $accountHistory->account_number)->first();
         $accountHistory->old_balance = $account->blance;
-        $accountHistory->new_balance = $account->blance + $accountHistory->amount;
+        if ($accountHistory->type == AccountHistory::TYPE_WITHDRAW) {
+            $accountHistory->new_balance = $account->blance - $accountHistory->amount;
+        } else {
+            $accountHistory->new_balance = $account->blance + $accountHistory->amount;
+        }
         $accountHistory->save();
         //update balance
         $account->blance = $accountHistory->new_balance;

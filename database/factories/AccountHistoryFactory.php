@@ -18,7 +18,7 @@ class AccountHistoryFactory extends Factory
     {
         return [
             'account_number' => '0916036287',
-            'type' => 'deposit',
+            'type' => random_int(0, 1) ? 'deposit' : 'withdraw',
             'amount' => $this->faker->randomFloat(/** @scrutinizer ignore-type */ 0, 0, 99999.),
             'description' => $this->faker->text,
             'created_at' => $this->faker->dateTimeBetween('-1 years', 'now', 'Asia/Ho_Chi_Minh'),

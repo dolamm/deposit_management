@@ -9,17 +9,14 @@ class BankAccount extends Model
 {
     use HasFactory;
     protected $fillable = ['blance'];
+
     public function user()
     {
-        return $this->belongsTo(User::class, 'account_number', 'phone');
+        return $this->hasOne(User::class, 'account_number', 'phone');
     }
-    public function getBlance()
+    
+    public function accountHistory()
     {
-        return $this->blance;
-    }
-    public function updateBlance($amount)
-    {
-        $this->blance += $amount;
-        $this->save();
+        return $this->hasMany(AccountHistory::class, 'account_number', 'account_number');
     }
 }

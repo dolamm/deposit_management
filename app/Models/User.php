@@ -66,6 +66,10 @@ class User extends Authenticatable
     }
 
     public function bankAccount(){
-        return $this->belongsTo(BankAccount::class, 'user_id', 'id');
+        return $this->hasOne(BankAccount::class, 'user_id', 'id');
+    }
+
+    public function accountHistory(){
+        return $this->hasMany(AccountHistory::class, 'account_number', 'phone');
     }
 }

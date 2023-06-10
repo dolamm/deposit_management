@@ -9,7 +9,7 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 // js
                 'resources/js/app.js',
-                'resources/js/chart/countuser.js',
+                // 'resources/js/chart/AccountHistory.js',
                 // css
                 "resources/css/app.css",
                 "resources/css/list-user.css",

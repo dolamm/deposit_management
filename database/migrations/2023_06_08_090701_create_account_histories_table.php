@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('account_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('account_number', 255);
+            $table->string('account_number');
             //type deposit or withdraw == add or sub
             $table->string('type', 255);
             $table->float('old_balance', 30, 5)->nullable();
