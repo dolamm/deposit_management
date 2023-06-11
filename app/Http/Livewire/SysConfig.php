@@ -10,6 +10,11 @@ use App\Models\User;
 use App\Http\Livewire\Notification;
 class SysConfig extends Component
 {
+    const route = [
+        'component' => 'sys-config',
+        'route' => '/sys-config',
+        'name' => 'system-config',
+    ];
     const permission = [
         'view' => [
             'name' => 'sys-config',

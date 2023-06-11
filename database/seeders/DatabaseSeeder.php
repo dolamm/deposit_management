@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DefaultPermission::class);
         $this->call(DefaultSetting::class);
         $this->call(AccountHS::class);
+        $this->call(DefaultRouter::class);
     }
 }

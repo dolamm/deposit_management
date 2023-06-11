@@ -10,4 +10,5 @@ class Sotietkiem extends Model
     use HasFactory;
     protected $table = 'sotietkiem';
     const CREATED_AT = 'ngaymoso';
+    protected $fillable = ['loaikyhan', 'ngaydaohan', 'sotiengui', 'sodu', 'tienlai', 'ngaydoso'];
 }

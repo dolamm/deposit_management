@@ -10,6 +10,11 @@ use function PHPSTORM_META\type;
 
 class ListUser extends Component
 {
+    const route = [
+        'component' => 'list-user',
+        'route' => '/list-user',
+        'name' => 'list-user',
+    ];
     const permission = [
         'create-user' =>[
             'title' => 'Thêm người dùng',

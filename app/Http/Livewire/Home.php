@@ -12,6 +12,11 @@ class Home extends Component
     public $user;
     public $accountHistory;
     public $accountBlance;
+    const route = [
+        'component' => 'home',
+        'route' => '/home',
+        'name' => 'home',
+    ];
     public function mount()
     {
         $this->user = User::find(Auth::user()->id);

@@ -96,7 +96,7 @@
                                 <i class="bi-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">System Setting</span></a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route('config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">system setting</span> 1</a>
+                                    <a href="{{route('system-config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">system setting</span> 1</a>
                                 </li>
                                 <li>
                                     <a href="{{route('edit-permission')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">permission</span> 2</a>
@@ -112,7 +112,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                             <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
-                            <li><a class="dropdown-item" href="{{route('config')}}">Settings</a></li>
+                            <li><a class="dropdown-item" href="{{route('system-config')}}">Settings</a></li>
                             <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
