@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\AccountHistory;
+use App\Models\User;
 class AccountHS extends Seeder
 {
     /**
@@ -12,6 +13,11 @@ class AccountHS extends Seeder
      */
     public function run(): void
     {
-        AccountHistory::factory()->count(20)->create();
+        $user = User::all();
+        foreach ($user as $key => $value) {
+            AccountHistory::factory()->count(20)->create([
+                'account_number' => $value->phone,
+            ]);
+        }
     }
 }

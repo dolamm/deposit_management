@@ -17,7 +17,6 @@ class AccountHistoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'account_number' => '0916036287',
             'type' => random_int(0, 1) ? 'deposit' : 'withdraw',
             'amount' => $this->faker->randomFloat(/** @scrutinizer ignore-type */ 0, 0, 99999.),
             'description' => $this->faker->text,

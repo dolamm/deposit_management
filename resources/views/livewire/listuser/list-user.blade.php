@@ -9,7 +9,13 @@
     </li>
     @endif
     @endforeach
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#new-user" type="button" role="tab" aria-controls="new-user" aria-selected="false">
+        new-user
+      </button>
+    </li>
   </ul>
+  <div class="tab-content" id="myTabContent">
     @foreach($listRole as $index => $role)
     <div class="tab-pane fade @if($role->id == $currentRole) show active @endif" id="{{$role->name}}" role="tabpane{{$index}}" aria-labelledby="{{$role->name}}-tab">
       <!-- display user list -->
@@ -75,6 +81,16 @@
       </div>
     </div>
     @endforeach
+    <!-- add new user -->
+    <div class="tab-pane fade " id="new-user" role="tabpane-new-user" aria-labelledby="new-user-tab">
+      <div class="container-xl">
+        <div class="table-responsive">
+          <div class="table-wrapper">
+            <livewire:add-user />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <script>
     $(document).ready(function() {
