@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Auth;
 use App\Models\User;
 use App\Http\Livewire\Notification;
+use Illuminate\Validation\Validator;
 class SysConfig extends Component
 {
     const route = [
@@ -46,16 +47,25 @@ class SysConfig extends Component
     }
 
     protected $rules = [
-        'value.*.giatri' => 'required|min:1',
+        //get config id = 3
+        'value.*.giatri' => [
+            'required',
+            'numeric',
+            'min:1',
+        ],
     ];
 
     protected $messages = [
-        'value.*.giatri.required' => 'Gia tri khong duoc de trong',
-        'value.*.giatri.min' => 'Gia tri phai lon hon 1',
+        'value.*.giatri.required' => 'Giá trị không được để trống',
+        'value.*.giatri.min' => 'Giá trị không được nhỏ hơn 1',
+        'value.*.giatri.numeric' => 'Giá trị phải là số',
     ];
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
     public function update($key)
     {
-        // $this->validate();
         if (Gate::allows('sys-config-update')) {
             $value = $this->value[$key]['giatri'];
             $config = Config::where('key', $key)->first();
