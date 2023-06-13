@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Livewire\SysConfig;
 use App\Http\Controllers\RouteController;
 use App\Models\Route as RouteModel;
+use App\Http\Livewire\Profile;
+use App\Http\Livewire\TestNe;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

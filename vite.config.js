@@ -10,6 +10,7 @@ export default defineConfig({
                 // js
                 'resources/js/app.js',
                 // 'resources/js/chart/AccountHistory.js',
+                'resources/js/chart/DoanhSoNgay.js',
                 // css
                 "resources/css/app.css",
                 "resources/css/list-user.css",

@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Route extends Model
+class BcSoLuongSo extends Model
 {
     use HasFactory;
-    protected $table = 'routes';
-    protected $fillable = [
-        'component',
-        'route',
-        'name',
-    ];
+    protected $table = 'bc_soluongso';
+    const CREATED_AT = 'ngaytao';
+    const UPDATED_AT = null;
 }

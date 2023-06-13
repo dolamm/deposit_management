@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bc_doanhso', function (Blueprint $table) {
+        Schema::create('bc_soluongso', function (Blueprint $table) {
             $table->id();
             $table->string('makyhan');
-            $table->float('tongchi',25,3);
-            $table->float('tongthu',25,3);
-            $table->float('chenhlech',25,3)->nullable();
+            $table->bigInteger('sl_somoi');
+            $table->bigInteger('sl_sodong');
+            $table->bigInteger('chenhlech')->nullable();
             $table->datetime('ngaytao');
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bc_doanhso');
+        Schema::dropIfExists('bc_soluongso');
     }
 };
