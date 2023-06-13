@@ -42,6 +42,7 @@
                                         <div class="d-flex pt-1">
                                             <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Chat</button>
                                             <button type="button" class="btn btn-primary flex-grow-1">Follow</button>
+                                            <button type="button" class="btn btn-primary flex-grow-1"><a href="/test/{{$item->id}}">Xem chi tiết</a></button>
                                         </div>
                                     </div>
                                 </div>
