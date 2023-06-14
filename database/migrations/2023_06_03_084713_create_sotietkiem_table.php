@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sotietkiem', function (Blueprint $table) {
             $table->id();
-            $table->json('loaikyhan')->nullable();
+            $table->json('loaikyhan');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             // $table->timestamps();

@@ -18,7 +18,7 @@ class Sotietkiem extends Model
         return $this->belongsTo('App\Models\Users');
     }
 
-    public function loaikyhan()
+    public function kyhan()
     {
         return $this->belongsTo(Kyhan::class,'loaikyhan','makyhan');
     }
