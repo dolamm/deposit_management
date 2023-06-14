@@ -13,6 +13,7 @@ class BcSLSoObserver
     {
         // update chenh lech
         $bcSoLuongSo->chenhlech = $bcSoLuongSo->sl_somoi - $bcSoLuongSo->sl_sodong;
+        $bcSoLuongSo->save();
     }
 
     /**

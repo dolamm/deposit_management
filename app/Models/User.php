@@ -24,7 +24,7 @@ class User extends Authenticatable
         'fullname',
         'email',
         'password',
-        'CMND/CCCD',
+        'cmnd_cccd',
         'phone',
         'address',
         'birthday',

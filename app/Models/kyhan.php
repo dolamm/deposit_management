@@ -18,19 +18,19 @@ class Kyhan extends Model
     const dskyhan = [
         1 => [
             'makyhan' => "Khongkyhan",
-            'tenkyhan' => "Không kỳ hạn",
+            'tenkyhan' => "Gửi không kỳ hạn",
             'thoigiannhanlai' => 1,
             'laisuat' => 0.005,
         ],
         2 => [
             'makyhan' => "3thang",
-            'tenkyhan' => "kỳ hạn 3 tháng",
+            'tenkyhan' => "Kỳ hạn 3 tháng",
             'thoigiannhanlai' => 90,
             'laisuat' => 0.05,
         ],
         3 => [
             'makyhan' => "6thang",
-            'tenkyhan' => "kỳ hạn 6 tháng",
+            'tenkyhan' => "Kỳ hạn 6 tháng",
             'thoigiannhanlai' => 180,
             'laisuat' => 0.055,
         ],

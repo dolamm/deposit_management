@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BcDoanhSoController;
-use App\Http\Controllers\BcSLSoController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,10 +14,12 @@ use App\Http\Controllers\BcSLSoController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Auth::routes();
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/bc-doanh-so', [BcDoanhSoController::class, 'bcngay']);
-Route::get('/bc-doanh-so-thang', [BcDoanhSoController::class, 'bcthang']);
-Route::get('/bc-sl-so', [BcSLSoController::class, 'bcngay']);
+// Route::group([
+//     'middleware' => ['auth:api'],
+// ], function () {
+// });

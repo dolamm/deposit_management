@@ -11,4 +11,10 @@ class BcSoLuongSo extends Model
     protected $table = 'bc_soluongso';
     const CREATED_AT = 'ngaytao';
     const UPDATED_AT = null;
+    protected $fillable = [
+        'makyhan',
+        'sl_somoi',
+        'sl_sodong',
+        'chenhlech',
+    ];
 }

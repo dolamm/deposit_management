@@ -9,8 +9,10 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 // js
                 'resources/js/app.js',
-                // 'resources/js/chart/AccountHistory.js',
                 'resources/js/chart/DoanhSoNgay.js',
+                'resources/js/chart/DoanhSoThang.js',
+                'resources/js/chart/AccountHistory.js',
+                'resources/js/chart/SLSoNgay.js',
                 // css
                 "resources/css/app.css",
                 "resources/css/list-user.css",

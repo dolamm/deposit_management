@@ -42,8 +42,8 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-card-id fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="CMND-CCCD" class="form-control @error('CMND-CCCD') is-invalid @enderror" name="CMND/CCCD" placeholder="Số CMND/CCCD" value="{{ old('CMND/CCCD') }}" required autocomplete="CMND/CCCD" />
-                      @error('CMND/CCCD')
+                      <input type="text" id="CMND-CCCD" class="form-control @error('CMND-CCCD') is-invalid @enderror" name="cmnd_cccd" placeholder="Số cmnd_cccd" value="{{ old('cmnd_cccd') }}" required autocomplete="cmnd_cccd" />
+                      @error('cmnd_cccd')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                           </span>

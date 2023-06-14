@@ -19,6 +19,7 @@ class BcSoLuongSoFactory extends Factory
         return [
             "sl_somoi" => fake()->numberBetween(0, 100),
             "sl_sodong" => fake()->numberBetween(0, 100),
+            'ngaytao' => $this->faker->unique()->dateTimeBetween('-2 year', 'now'),
         ];
     }
 }

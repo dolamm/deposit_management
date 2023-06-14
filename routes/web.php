@@ -5,8 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Livewire\SysConfig;
 use App\Http\Controllers\RouteController;
 use App\Models\Route as RouteModel;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\BcDoanhSoController;
+use App\Http\Controllers\BcSLSoController;
 use App\Http\Livewire\Profile;
-use App\Http\Livewire\TestNe;
+use App\Http\Livewire\Test;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +40,11 @@ $routes = Cache::rememberForever('routes', function () {
 foreach ($routes as $route) {
     Route::get($route->route, [RouteController::class, 'index'])->name($route->name);
 }
+
+Route::prefix('api')->group(function () {
+    Route::get('/bien-dong-so-du', [AccountController::class, 'BienDongSoDu']);
+    Route::get('/bc-doanh-so', [BcDoanhSoController::class, 'bcngay']);
+    Route::get('/bc-doanh-so-thang', [BcDoanhSoController::class, 'bcthang']);
+    Route::get('/bc-sl-so', [BcSLSoController::class, 'bcngay']);
+    Route::get('/bc-doanh-so-tong-quan-ngay', [BcDoanhSoController::class, 'bctongquanngay']);
+});

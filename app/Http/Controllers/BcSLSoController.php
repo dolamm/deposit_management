@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\BcSoLuongSo;
 use Carbon\Carbon;
 use App\Models\Kyhan;
+use App\Models\BcDoanhSo as BcDoanhSoModel;
+
 class BcSLSoController extends Controller
 {
     public function bcngay (){
@@ -13,10 +15,7 @@ class BcSLSoController extends Controller
         $data = [];
         foreach($label as $key => $value){
             //soft data asc
-            $data[$value] = BcSoLuongSo::where('makyhan', $value)->orderBy('ngaytao', 'asc')->get(['sl_somoi', 'sl_sodong', 'ngaytao']);
-            foreach($data[$value] as $k => $v){
-                $data[$value][$k]['ngaytao'] = Carbon::parse($v['ngaytao'])->format('d-m-Y');
-            }
+            $data[$value] = BcSoLuongSo::where('makyhan', $value)->orderBy('ngaytao', 'asc')->get(['sl_somoi', 'sl_sodong', 'chenhlech', 'ngaytao']);
         }
         return response()->json($data);
     }

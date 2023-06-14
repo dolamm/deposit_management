@@ -38,4 +38,22 @@ class BcDoanhSoController extends Controller
         }
         return response()->json($data);
     }
+
+    public function bctongquanngay () {
+        $tongchi = BcDoanhSoModel::all()->groupBy(function($date) {
+            return Carbon::parse($date->ngaytao)->format('d-m-Y');
+        })->map(function ($item) {
+            return $item->sum('tongchi');
+        });
+        $tongthu = BcDoanhSoModel::all()->groupBy(function($date) {
+            return Carbon::parse($date->ngaytao)->format('d-m-Y');
+        })->map(function ($item) {
+            return $item->sum('tongthu');
+        });
+
+        return response()->json([
+            'tongchi' => $tongchi,
+            'tongthu' => $tongthu,
+        ]);
+    }
 }   
