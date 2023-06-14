@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\User;
 
-class MoSoTietKiem extends Component
+class SearchUser extends Component
 {
     public $user;
     public $searchTerm;
@@ -18,7 +18,7 @@ class MoSoTietKiem extends Component
     {
         //phone or cmnd/cccd or fullname
         $this->user = User::where('phone', 'like', '%' . $this->searchTerm . '%')
-            ->orWhere('cmnd_cccd', 'like', '%' . $this->searchTerm . '%')
+            ->orWhere('cmnd/cccd', 'like', '%' . $this->searchTerm . '%')
             ->orWhere('fullname', 'like', '%' . $this->searchTerm . '%')
             ->get();
     }
@@ -26,6 +26,6 @@ class MoSoTietKiem extends Component
 
     public function render()
     {
-        return view('livewire.mo-so-tiet-kiem');
+        return view('livewire.search-user');
     }
 }

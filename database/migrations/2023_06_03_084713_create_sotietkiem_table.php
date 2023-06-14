@@ -18,9 +18,9 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             // $table->timestamps();
             $table->datetime('ngaymoso');
-            $table->datetime('ngaydaohan');
+            $table->datetime('ngaydaohan')->nullable();
             $table->float('sotiengui');
-            $table->float('sodu');
+            $table->float('sodu')->nullable();
             $table->float('tienlai')->default(0);
             $table->datetime('ngaydongso')->nullable()->default(null);
         });
