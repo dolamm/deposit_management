@@ -3,29 +3,39 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\sotietkiem;
+use App\Models\Config;
 
-class MoSoTietKiem extends Component
+class MoSotietkiem extends Component
 {
-    public $user;
-    public $searchTerm;
-    public function mount()
-    {
-        $this->user = User::all();
-    }
-    
-    public function searchUser()
-    {
-        //phone or cmnd/cccd or fullname
-        $this->user = User::where('phone', 'like', '%' . $this->searchTerm . '%')
-            ->orWhere('cmnd/cccd', 'like', '%' . $this->searchTerm . '%')
-            ->orWhere('fullname', 'like', '%' . $this->searchTerm . '%')
-            ->get();
+    public Sotietkiem $passbook;
+
+    public function mount(){
+        $this->passbook = new Sotietkiem();
+        $this->listkyhan = Kyhan::all();
+        $this->min = Config::find(2)->get('giatri');
     }
 
+    protected $rules = [
+        'passbook.loaikyhan' => 'required',
+    ];
+
+    public function AddPassBook(){
+
+        $validatedData = Validator::make(
+            [
+                'sotiengui'=>['required','numeric',Rule::greaterThan($this->min)]
+            ]
+        );
+        if ($validatedData->fails()){
+
+        }
+        $this->passbook->save();
+        $this->passbook= new Sotietkiem();
+    }
 
     public function render()
     {
-        return view('livewire.mo-so-tiet-kiem');
+        return view('livewire.mo-so-tietkiem');
     }
 }
