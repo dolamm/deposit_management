@@ -15,7 +15,7 @@ class Sotietkiem extends Model
 
     public function khachhang()
     {
-        return $this->belongsTo('App\Models\Users');
+        return $this->belongsTo('App\Models\User','user_id', 'id');
     }
 
     public function kyhan()
