@@ -53,7 +53,9 @@ class RegisterController extends Controller
             'fullname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'cmnd_cccd' => ['required', 'string', 'max:255'],
+            'cmnd_cccd' => ['required', 'string', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'max:255', 'unique:users'],
+            'address' => ['string', 'max:255'],
         ]);
     }
 
@@ -69,6 +71,9 @@ class RegisterController extends Controller
             'fullname' => $data['fullname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'cmnd_cccd' => $data['cmnd_cccd'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
             'api_token' => Str::random(60),
         ]);
     }

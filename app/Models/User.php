@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Sotietkiem;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 class User extends Authenticatable
 {
@@ -71,5 +72,9 @@ class User extends Authenticatable
 
     public function accountHistory(){
         return $this->hasMany(AccountHistory::class, 'account_number', 'phone');
+    }
+
+    public function ListSotietkiem(){
+        return $this->hasMany(Sotietkiem::class, 'user_id', 'id');
     }
 }

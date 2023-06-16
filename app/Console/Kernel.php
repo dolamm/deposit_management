@@ -5,6 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\DB;
+use App\Console\Commands\CalculateInterest;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -13,6 +14,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command('sys:calculate-interest')->dailyAt('00:00');
     }
 
     /**

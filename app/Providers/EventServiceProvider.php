@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\AccountHistory;
 use App\Models\BCDoanhSo;
 use App\Models\BcSoLuongSo;
+use App\Models\Sotietkiem;
+use App\Models\PassBookHistory;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -12,6 +14,8 @@ use Illuminate\Support\Facades\Event;
 use App\Observers\AccountObserver;
 use App\Observers\BCDoanhSoObserver;
 use App\Observers\BcSLSoObserver;
+use App\Observers\SotietkiemObserver;
+use App\Observers\PassbookHSObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -52,6 +56,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         BcSoLuongSo::class => [
             BcSLSoObserver::class,
+        ],
+        Sotietkiem::class => [
+            SotietkiemObserver::class,
+        ],
+        PassBookHistory::class => [
+            PassbookHSObserver::class,
         ],
     ];
 }

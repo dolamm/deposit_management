@@ -12,7 +12,7 @@ class BcDoanhSoController extends Controller
         $data = [];
         foreach($label as $key => $value){
             //soft data asc
-            $data[$value] = BcDoanhSoModel::where('makyhan', $value)->orderBy('ngaytao', 'asc')->get(['tongchi', 'tongthu', 'ngaytao']);
+            $data[$value] = BcDoanhSoModel::where('makyhan', $value)->orderBy('ngaytao', 'desc')->take(20)->get(['tongchi', 'tongthu', 'ngaytao']);
             // foreach($data[$value] as $k => $v){
             //     $data[$value][$k]['ngaytao'] = Carbon::parse($v['ngaytao'])->format('d-m-Y');
             // }
@@ -25,7 +25,7 @@ class BcDoanhSoController extends Controller
         $data = [];
         foreach($label as $key => $value){
             //soft data asc
-            $data[$value] = BcDoanhSoModel::where('makyhan', $value)->orderBy('ngaytao', 'asc')->get(['tongchi', 'tongthu', 'ngaytao']);
+            $data[$value] = BcDoanhSoModel::where('makyhan', $value)->orderBy('ngaytao', 'desc')->take(24)->get(['tongchi', 'tongthu', 'ngaytao']);
             // group by month and year and sum tongchi, tongthu
             $data[$value] = $data[$value]->groupBy(function($date) {
                 return Carbon::parse($date->ngaytao)->format('m-Y');
@@ -34,7 +34,7 @@ class BcDoanhSoController extends Controller
                     'tongchi' => $item->sum('tongchi'),
                     'tongthu' => $item->sum('tongthu'),
                 ];
-            });
+            })->take(18)->reverse();
         }
         return response()->json($data);
     }

@@ -59,10 +59,10 @@
                         </li>
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+                            <i class="fs-4 bi-piggy-bank-fill"></i><span class="ms-1 d-none d-sm-inline">So Tiet Kiem</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
+                                    <a href="{{route('add-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Mo So Tiet Kiem</span></a>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
@@ -71,13 +71,13 @@
                         </li>
                         <li>
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="bi bi-clipboard-data-fill"></i><span class="ms-1 d-none d-sm-inline">Bao Cao</span> </a>
+                            <i class="fs-4 bi-clipboard-data-fill"></i><span class="ms-1 d-none d-sm-inline">Bao Cao</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route('bcdoanhso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Bao Cao Doanh So Ngay</span></a>
+                                    <a href="{{route('bcdoanhso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Bao Cao Doanh So</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span></a>
+                                    <a href="{{route('bcslso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Bao Cao So Luong So</span></a>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span></a>
@@ -90,13 +90,13 @@
                         </li>
                         <li>
                             <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                <i class="bi-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">System Setting</span></a>
+                                <i class="fs-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">System Setting</span></a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route('system-config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">system setting</span> 1</a>
+                                    <a href="{{route('system-config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Cai dat thong so</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('edit-permission')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">permission</span> 2</a>
+                                    <a href="{{route('edit-permission')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quyen nguoi dung</span></a>
                                 </li>
                             </ul>
                         </li>

@@ -5,6 +5,8 @@ $(document).ready(() => {
     fetch(api)
         .then((response) => response.json())
         .then((data) => {
+            // reserver data
+            data.reverse();
             let labels = [];
             let accountData = [];
             data.forEach((element) => {

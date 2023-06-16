@@ -40,9 +40,33 @@
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="phone" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="số điện thoại" value="{{ old('phone') }}" required autocomplete="phone" />
+                      @error('phone')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="address" id="address" class="form-control @error('address') is-invalid @enderror" name="address" placeholder="địa chỉ" value="{{ old('address') }}" required autocomplete="address" />
+                      @error('address')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-card-id fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" id="CMND-CCCD" class="form-control @error('CMND-CCCD') is-invalid @enderror" name="cmnd_cccd" placeholder="Số cmnd_cccd" value="{{ old('cmnd_cccd') }}" required autocomplete="cmnd_cccd" />
+                      <input type="text" id="cmnd_cccd" class="form-control @error('cmnd_cccd') is-invalid @enderror" name="cmnd_cccd" placeholder="Số cmnd_cccd" value="{{ old('cmnd_cccd') }}" required autocomplete="cmnd_cccd" />
                       @error('cmnd_cccd')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>

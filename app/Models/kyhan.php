@@ -21,6 +21,7 @@ class Kyhan extends Model
             'tenkyhan' => "Gửi không kỳ hạn",
             'thoigiannhanlai' => 1,
             'laisuat' => 0.005,
+            'giahan' => TRUE,
         ],
         2 => [
             'makyhan' => "3thang",
@@ -35,4 +36,8 @@ class Kyhan extends Model
             'laisuat' => 0.055,
         ],
     ];
+
+    public function ListPassbook (){
+        return $this->hasMany(Sotietkiem::class, 'makyhan', 'makyhan');
+    }
 }

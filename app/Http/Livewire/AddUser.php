@@ -5,10 +5,24 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Gate;
 class AddUser extends Component
 {
     public User $user;
     public $listRole;
+    const permission =[
+        'add-user' => [
+            'title' => 'Thêm người dùng',
+            'description' => 'Thêm người dùng',
+            'name' => 'add-user',
+            'permission' => ['admin', 'officer'],
+        ],
+    ];
+    const route = [
+        'component' => 'add-user',
+        'route' => '/add-user',
+        'name' => 'add-user',
+    ];
     public function mount(){
         $this->user = new User();
         $this->listRole = Role::all();
@@ -30,16 +44,22 @@ class AddUser extends Component
         'user.cmnd_cccd.unique' => 'Số CMND/CCCD đã tồn tại',
         'user.email.email' => 'Email không đúng định dạng',
     ];
+
     public function render()
     {
         return view('livewire.listuser.add-user');
     }
-
+    
     public function addUser(){
-        $this->validate();
-        $this->user->password = bcrypt($this->user->password);
-        $this->user->save();
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Thêm thành công!']);
-        $this->user = new User();
+        if(Gate::allows('add-user')){
+            $this->validate();
+            $this->user->password = bcrypt($this->user->password);
+            $this->user->save();
+            $this->user = new User();
+            $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Thêm thành công!']);
+        }
+        else{
+            return view('errors.not_permission');
+        }
     }
 }

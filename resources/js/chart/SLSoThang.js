@@ -1,27 +1,22 @@
 import Chart from "chart.js/auto";
+
 $(document).ready(() => {
-    const api = "api/bc-sl-so";
+    const api = '/api/bc-sl-so-thang';
     fetch(api)
-        .then((res) => {
-            return res.json();
+        .then(res => {
+            return res.json()
         })
         .then((data) => {
             let key = Object.keys(data);
-            console.log(data);
-            key.forEach((element) => {
-                let labels = [];
+            key.forEach((item) => {
+                let tempData = data[item];
+                let labels = Object.keys(tempData);
                 let sl_somoi = [];
                 let sl_sodong = [];
-                let tempData = data[element].reverse();
-                tempData.forEach((item) => {
-                    let date = new Date(item.ngaytao);
-                    let day = date.getDate();
-                    let month = date.getMonth();
-                    let year = date.getFullYear();
-                    let label = new Date(year, month, day).toLocaleDateString();
-                    labels.push(label);
-                    sl_somoi.push(item.sl_somoi);
-                    sl_sodong.push(item.sl_sodong);
+                console.log(labels);
+                labels.forEach((element) => {
+                    sl_somoi.push(tempData[element].sl_somoi);
+                    sl_sodong.push(tempData[element].sl_sodong);
                 });
                 const chartData = {
                     labels: labels,
@@ -51,15 +46,15 @@ $(document).ready(() => {
                             },
                             title: {
                                 display: true,
-                                text: "Biểu đồ số lượng sổ theo ngày",
+                                text: "Biểu đồ số lượng sổ theo tháng",
                             },
                         },
                     },
                 };
                 var myChart = new Chart(
-                    document.getElementById("slso-" + element + "-ngay"),
+                    document.getElementById("slso-" + item + "-thang"),
                     config
                 );
             });
         });
-});
+})

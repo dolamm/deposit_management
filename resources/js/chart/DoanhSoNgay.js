@@ -12,6 +12,8 @@ $(document).ready(() => {
                 let tongchi = [];
                 let tongthu = [];
                 let label = [];
+                // reserver data
+                data[key[i]].reverse();
                 for (let j = 0; j < data[key[i]].length; j++) {
                     tongchi.push(data[key[i]][j].tongchi);
                     tongthu.push(data[key[i]][j].tongthu);
