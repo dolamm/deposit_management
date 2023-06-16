@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
             $table->string('account_number')->unique();
-            $table->float('blance', 30, 5)->default(0);
+            $table->float('balance', 30, 5)->default(0);
             $table->timestamps();
         });
 

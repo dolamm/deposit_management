@@ -6,17 +6,17 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\sotietkiem;
 
-class Personal extends Component
+class UserPassbook extends Component
 {
     public $personal;
 
     public function mount(){
-        $userId = Auth::id();
-        $this->personal = Sotietkiem::where('user_id', $userId)->get();
+        $user = Auth::user();
+        $this->personal = $user->passBook;
     }
 
     public function render()
     {
-        return view('livewire.personal');
+        return view('livewire.user-passbook');
     }
 }

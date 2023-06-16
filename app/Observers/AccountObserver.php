@@ -14,15 +14,17 @@ class AccountObserver
     {
         //update old balance and new balance
         $account = BankAccount::where('account_number', $accountHistory->account_number)->first();
-        $accountHistory->old_balance = $account->blance;
+        $accountHistory->old_balance = $account->balance;
+        
         if ($accountHistory->type == AccountHistory::TYPE_WITHDRAW) {
-            $accountHistory->new_balance = $account->blance - $accountHistory->amount;
-        } else {
-            $accountHistory->new_balance = $account->blance + $accountHistory->amount;
+            $accountHistory->new_balance = $account->balance - $accountHistory->amount;
+            $account->balance -= $accountHistory->amount;
+        } 
+        else if ($accountHistory->type == AccountHistory::TYPE_DEPOSIT){
+            $accountHistory->new_balance = $account->balance + $accountHistory->amount;
+            $account->balance += $accountHistory->amount;
         }
         $accountHistory->save();
-        //update balance
-        $account->blance = $accountHistory->new_balance;
         $account->save();
     }
 

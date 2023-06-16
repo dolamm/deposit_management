@@ -7,11 +7,15 @@
     | Default user will be created at project installation/deployment
     |
     */
+use Illuminate\Support\Str;
 return [
     'fullname' =>'administrator',
     'email' => 'admin@superbank.com',
     'password' => '12345678',
     'role' => 1,
-    'CMND/CCCD' => "123465789",
-    'phone' => '0916036287'
+    'cmnd_cccd' => "123465789",
+    'phone' => '0916036287',
+    'address' => 'bank master',
+    'birthday' => '1999-01-01',
+    'api_token' => Str::random(60),
 ];

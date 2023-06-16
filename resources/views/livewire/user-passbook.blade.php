@@ -1,5 +1,4 @@
 <div>
-    {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     <div>
     <h1>Danh sách sổ tiết kiệm</h1>
     <table>
@@ -13,7 +12,7 @@
         <tbody>
         @foreach ($personal as $saving) 
         @php
-            $jsonData = $saving->loaikyhan; 
+            $jsonData = $saving->thongtinkyhan; 
             $arrayData = json_decode($jsonData, true); 
         @endphp
             <tr>

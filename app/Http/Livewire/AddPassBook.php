@@ -8,31 +8,57 @@ use Illuminate\Support\Facades\Session;
 use App\Models\sotietkiem;
 use App\Models\config;
 use App\Models\kyhan;
+use App\Models\User;
+use Illuminate\Validation\Validator;
 
 class AddPassBook extends Component
 {
     public Sotietkiem $passbook;
 
-    public $uid;
-    public $id_kyhan;
-
+    public $user;
+    public $data;
+    public $listkyhan;
     public function mount($id){
         $this->passbook = new Sotietkiem();
         $this->listkyhan = Kyhan::all();
-        $this->min = Config::find(2)->get('giatri');
-        $this->uid = $id;
+        $this->user = User::find($id);
+        $this->data['hinhthuc'] =[
+            '1' => 'Tiền mặt',
+            '2' => 'Chuyển khoản',
+        ];
     }
 
     protected $rules = [
-        'passbook.loaikyhan' => 'required',
-        'passbook.sotiengui' => 'required|numeric|min:1'
+        'passbook.sotiengui' => 'required|numeric',
+        'passbook.makyhan' => 'required',
+    ];
+    protected $messages = [
+        'passbook.*.required' => 'Không được để trống',
+        'passbook.*.numeric' => 'Phải là số',
     ];
 
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
     public function Add(){
-        $this->passbook->loaikyhan = Kyhan::find($this->id_kyhan);
-        $this->passbook->user_id = $this->uid;
+        $tienguitoithieu = config::where('id', 1)->get('giatri');
+        $balance = $this->user->bankAccount->balance;
+        $this->withValidator(function (Validator $validator) use ($tienguitoithieu, $balance){
+            $validator->after(function ($validator) use ($tienguitoithieu, $balance){
+                if($this->passbook->sotiengui < $tienguitoithieu[0]['giatri']){
+                    $validator->errors()->add('passbook.sotiengui', 'Số tiền gửi tối thiểu là '.$tienguitoithieu[0]['giatri']);
+                }
+                if($this->data['hinhthucguitien'] == 2 && $this->passbook->sotiengui > $balance){
+                    $validator->errors()->add('passbook.sotiengui', 'Số dư tài khoản không đủ');
+                }
+            });
+        });
+        $this->validate();
+        $this->passbook->user_id = $this->user->id;
         $this->passbook->save();
         $this->passbook= new Sotietkiem();
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Thêm thành công']);
     }
 
     public function render()

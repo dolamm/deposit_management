@@ -6,16 +6,22 @@
         <input type="text" class="form-control" id="fullname" wire:model="user.fullname">
         @error('user.fullname') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
+    <!-- cmnd_cccd -->
+    <div class="form-group">
+        <label for="cmnd_cccd">CMND/CCCD</label>
+        <input type="text" class="form-control" id="cmnd_cccd" wire:model="user.cmnd_cccd">
+        @error('user.cmnd_cccd') <span class="text-danger">{{ $message }}</span> @enderror
+    </div>
     <div class="form-group">
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" wire:model="user.email">
         @error('user.email') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="password">Password</label>
-        <input type="text" class="form-control" id="password" wire:model="user.password">
+        <input type="password" class="form-control" id="password" wire:model="user.password">
         @error('user.password') <span class="text-danger">{{ $message }}</span> @enderror
-    </div>
+    </div> -->
     <div class="form-group">
         <label for="role">Role</label>
         <select class="form-select" aria-label="Default select example" wire:model="user.role_id">
@@ -26,11 +32,6 @@
                 @endforeach
         </select>
         @error('user.role_id') <span class="text-danger">{{ $message }}</span> @enderror
-    </div>
-    <div class="form-group">
-        <label for="avatar">Avatar</label>
-        <input type="text" class="form-control" id="avatar" wire:model="user.avatar">
-        @error('user.avatar') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <div class="form-group">
         <label for="phone">Phone</label>
@@ -44,7 +45,7 @@
     </div>
     <div class="form-group">
         <label for="birthday">Birthday</label>
-        <input type="text" class="form-control" id="birthday" wire:model="user.birthday">
+        <input type="datetime-local" class="form-control" id="birthday" wire:model="user.birthday">
         @error('user.birthday') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <!-- button submit -->
