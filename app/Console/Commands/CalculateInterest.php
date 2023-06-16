@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Kyhan;
 use App\Models\Sotietkiem;
+use App\Models\PassBookHistory;
 use Carbon\Carbon;
 class CalculateInterest extends Command
 {
@@ -35,26 +36,32 @@ class CalculateInterest extends Command
             foreach($sotietkiem as $s){
                 $ngaymoso = Carbon::parse($s->ngaymoso);
                 $ngayhientai = Carbon::now();
-                $thoigiannhanlai = $s->thongtinkyhan['thoigiannhanlai'];
-                $giahan = $s->thongtinkyhan['giahan'];
-                $ngayhientai->diffInDays($ngaymoso);
+                $thongtinkyhan = json_decode($s->thongtinkyhan, true);
+                $thoigiannhanlai = $thongtinkyhan['thoigiannhanlai'];
+                $giahan = $thongtinkyhan['giahan'];
+                $strtoend = $ngayhientai->diffInDays($ngaymoso);
                 $check = $ngayhientai->diffInDays($ngaymoso) % $thoigiannhanlai;
                 if($check == 0){
-                    $sotienlai = $s->sotiengui * $s->thongtinkyhan['laisuat'] * $s->thongtinkyhan['thoigiannhanlai'] / 365;
-                    $s->sodu += $sotienlai;
-                    $s->tienlai += $sotienlai;
-                    $s->ngaydongso = $ngayhientai;
+                    $sotienlai = $s->sodu * $thongtinkyhan['laisuat'] * $thongtinkyhan['thoigiannhanlai'] / 365;
+                    PassBookHistory::create([
+                        'sotietkiem_id' => $s->id,
+                        'loaihinh' => PassBookHistory::INTEREST,
+                        'sotien' => $sotienlai,
+                    ]);
                 }
-                else if($check > 1){
-                    $khongkyhan = Kyhan::where('makyhan', 'khongkyhan')->first();
-                    $sotienlai = $s->sotiengui * $khongkyhan->laisuat * $khongkyhan->ngaytinhlai / 365;
-                    $s->sodu += $sotienlai;
-                    $s->tienlai += $sotienlai;
+                else if($strtoend > $thoigiannhanlai){
+                    $khongkyhan = Kyhan::find(1)->first();
+                    $sotienlai = $s->sodu * $khongkyhan->laisuat * $khongkyhan->ngaytinhlai / 365;
+                    PassBookHistory::create([
+                        'sotietkiem_id' => $s->id,
+                        'loaihinh' => PassBookHistory::INTEREST,
+                        'sotien' => $sotienlai,
+                    ]);
                 }
                 if($giahan == TRUE){
                     $s->ngaymoso = $ngayhientai;
                 }
-                $s->save();
+                
             }
         }
     }

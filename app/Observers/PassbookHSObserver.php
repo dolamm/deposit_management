@@ -26,9 +26,9 @@ class PassbookHSObserver
                 $passBookHistory->ghichu = "Rut tien";
                 break;
             case PassBookHistory::INTEREST:
-                $passBookHistory->sodumoi = $passBookHistory->sotien + $passBookHistory->sotien;
+                $passBookHistory->sodumoi = $passBookHistory->sotietkiem->sodu  + $passBookHistory->sotien;
                 $sotietkiem->sodu = $passBookHistory->sodumoi;
-                $sotietkiem->tienlai = $passBookHistory->sotien;
+                $sotietkiem->tienlai += $passBookHistory->sotien;
                 $passBookHistory->ghichu = "Lai suat ky han";
                 break;
         }
