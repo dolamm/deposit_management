@@ -27,7 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('root');
 //add middleware
 Route::get('/{component}', [RouteController::class, 'index']);
 
-Route::get('/test/{id}', AddPassBook::class)->name('show');
+Route::get('/addpassbook/{id}', AddPassBook::class)->name('show');
 // Route::get('/sys-config', [RouteController::class, 'index'])->name('config');
 // Route::get('/home', [RouteController::class, 'index'])->name('home');
 // Route::get('/list-user', [RouteController::class, 'index'])->name('list-user');
