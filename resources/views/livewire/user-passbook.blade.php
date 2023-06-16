@@ -11,13 +11,9 @@
         </thead>
         <tbody>
         @foreach ($personal as $saving) 
-        @php
-            $jsonData = $saving->thongtinkyhan; 
-            $arrayData = json_decode($jsonData, true); 
-        @endphp
             <tr>
                 <td>{{ $saving->id }}</td>
-                <td>{{ $arrayData['makyhan'] }}</td> 
+                <td>{{ $saving->thongtinkyhan['tenkyhan'] }}</td> 
                 <td>{{ $saving->sodu }}</td>
             </tr>
         @endforeach

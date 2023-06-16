@@ -14,7 +14,11 @@ class UserPassbook extends Component
         $user = Auth::user();
         $this->personal = $user->passBook;
     }
-
+    const route = [
+        'name' => "user-passbook",
+        'component' => 'user-passbook',
+        'route' => '/user-passbook',
+    ];
     public function render()
     {
         return view('livewire.user-passbook');

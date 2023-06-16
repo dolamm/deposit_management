@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Users;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
+use App\Casts\Json;
 class Sotietkiem extends Model
 {
     use HasFactory;
@@ -15,9 +17,11 @@ class Sotietkiem extends Model
 
     public function khachhang()
     {
-        return $this->belongsTo(Users::class,'user_id','id');
+        return $this->belongsTo(User::class,'user_id','id');
     }
-
+    protected $casts =[
+        'thongtinkyhan' => Json::class,
+    ];
     public function kyhan()
     {
         return $this->belongsTo(Kyhan::class,'makyhan','makyhan');

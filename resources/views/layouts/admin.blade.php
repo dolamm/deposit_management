@@ -59,13 +59,16 @@
                         </li>
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-piggy-bank-fill"></i><span class="ms-1 d-none d-sm-inline">So Tiet Kiem</span></a>
+                            <i class="fs-4 bi-piggy-bank-fill"></i><span class="ms-1 d-none d-sm-inline">Sổ Tiết Kiệm</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route('add-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Mo So Tiet Kiem</span></a>
+                                    <a href="{{route('add-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Mở Sổ Tiết Kiệm</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                                    <a href="{{route('user-passbook')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí Sổ Tiết Kiệm</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{route('list-passbook')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -74,29 +77,26 @@
                             <i class="fs-4 bi-clipboard-data-fill"></i><span class="ms-1 d-none d-sm-inline">Bao Cao</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route('bcdoanhso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Bao Cao Doanh So</span></a>
+                                    <a href="{{route('bcdoanhso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Báo Cáo Doanh Số</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('bcslso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Bao Cao So Luong So</span></a>
+                                    <a href="{{route('bcslso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Báo Cáo Số Lượng Sổ</span></a>
                                 </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span></a>
-                                </li>   
                             </ul>
                         </li>
                         <li>
                             <a href="{{route('list-user')}}" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Khách Hàng</span> </a>
                         </li>
                         <li>
                             <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                <i class="fs-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">System Setting</span></a>
+                                <i class="fs-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">Cài Đặt Hệ Thống</span></a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route('system-config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Cai dat thong so</span></a>
+                                    <a href="{{route('system-config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Thông Số Hệ Thống</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('edit-permission')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quyen nguoi dung</span></a>
+                                    <a href="{{route('edit-permission')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quyền Người Dùng</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -110,7 +110,7 @@
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                             <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
                             <li><a class="dropdown-item" href="{{route('system-config')}}">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{route('update-profile', Auth::user()->id)}}">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

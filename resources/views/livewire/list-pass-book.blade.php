@@ -1,31 +1,30 @@
 <div>
-    {{-- Do your work, then step back. --}}
     <div>
-    <h1>Danh sách sổ tiết kiệm</h1>
+        <h1>Danh sách sổ tiết kiệm</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Loại Tiết Kiệm</th>
+                    <th scope="col">Khách Hàng</th>
+                    <th scope="col">Số Dư</th>
+                    <th scope="col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Tên khách hàng</th>
-                <th>Loại kỳ hạn</th>
-                <th>Số dư</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach ($passbook as $a)
-            @php
-                $jsonData = $a->thongtinkyhan; 
-                $arrayData = json_decode($jsonData, true); 
-            @endphp
-
-            <tr>
-                <td>{{ $a->khachhang->fullname }}</td>
-                <td>{{ $arrayData['makyhan'] }}</td> 
-                <td>{{ $a->sodu }}</td>
-            </tr>
-        @endforeach
-
-        </tbody>
-    </table>
-</div>
+                @foreach ($passbook as $index => $item)
+                <tr>
+                    <th scope="row">{{ $index }}</td>
+                    <td>
+                       {{$item->thongtinkyhan['tenkyhan']}}
+                    </td>
+                    <td>{{ $item->sodu }}</td>
+                </tr>
+                @endforeach
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

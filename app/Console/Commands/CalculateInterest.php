@@ -36,11 +36,14 @@ class CalculateInterest extends Command
             foreach($sotietkiem as $s){
                 $ngaymoso = Carbon::parse($s->ngaymoso);
                 $ngayhientai = Carbon::now();
+
                 $thongtinkyhan = json_decode($s->thongtinkyhan, true);
                 $thoigiannhanlai = $thongtinkyhan['thoigiannhanlai'];
+
                 $giahan = $thongtinkyhan['giahan'];
                 $strtoend = $ngayhientai->diffInDays($ngaymoso);
                 $check = $ngayhientai->diffInDays($ngaymoso) % $thoigiannhanlai;
+
                 if($check == 0){
                     $sotienlai = $s->sodu * $thongtinkyhan['laisuat'] * $thongtinkyhan['thoigiannhanlai'] / 365;
                     PassBookHistory::create([
@@ -60,6 +63,7 @@ class CalculateInterest extends Command
                 }
                 if($giahan == TRUE){
                     $s->ngaymoso = $ngayhientai;
+                    $s->save();
                 }
                 
             }

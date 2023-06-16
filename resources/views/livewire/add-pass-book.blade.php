@@ -33,7 +33,7 @@
     <select name="kyhan" class="form-select" aria-label="Default select example" wire:model="passbook.makyhan">
       <option selected>Chọn kỳ hạn</option>
       @foreach($listkyhan as $kyhan)
-      <option value="{{$kyhan->id}}">{{$kyhan->tenkyhan}}-{{$kyhan->laisuat*100}}%</option>
+      <option value="{{$kyhan->makyhan}}">{{$kyhan->tenkyhan}}-{{$kyhan->laisuat*100}}%</option>
       @endforeach
     </select>
     @error('data.id_kyhan') <span class="text-danger">{{ $message }}</span> @enderror
