@@ -12,5 +12,6 @@ class Route extends Model
     protected $fillable = [
         'component',
         'route',
+        'name',
     ];
 }

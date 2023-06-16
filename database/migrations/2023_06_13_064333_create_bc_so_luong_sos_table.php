@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ls_guitien', function (Blueprint $table) {
+        Schema::create('bc_soluongso', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('sotietkiem_id')->unsigned();
-            $table->float('soducu',20,3);
-            $table->float('sotien',20,3);
-            $table->float('sodumoi',20,3);
-            $table->timestamps();
+            $table->string('makyhan');
+            $table->bigInteger('sl_somoi');
+            $table->bigInteger('sl_sodong');
+            $table->bigInteger('chenhlech')->nullable();
+            $table->datetime('ngaytao');
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ls_guitien');
+        Schema::dropIfExists('bc_soluongso');
     }
 };

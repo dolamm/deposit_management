@@ -14,7 +14,7 @@
         <tbody>
         @foreach ($passbook as $a)
             @php
-                $jsonData = $a->loaikyhan; 
+                $jsonData = $a->thongtinkyhan; 
                 $arrayData = json_decode($jsonData, true); 
             @endphp
 

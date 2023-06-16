@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('makyhan')->unique();
             $table->string('tenkyhan');
             $table->float('laisuat',6,3);
+            $table->boolean('giahan')->default(false)->comment('gia han khi den ngay dao han');
             $table->integer('thoigiannhanlai')->unsigned()->comment('don vi tinh la ngay');
             $table->datetime('ngaytao');
             $table->datetime('ngaycapnhat');

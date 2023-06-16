@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('makyhan');
             $table->float('tongchi',25,3);
             $table->float('tongthu',25,3);
-            $table->float('chenhlech',25,3);
-            $table->timestamps();
+            $table->float('chenhlech',25,3)->nullable();
+            $table->datetime('ngaytao');
         });
     }
 

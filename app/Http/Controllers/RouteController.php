@@ -10,7 +10,7 @@ class RouteController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index($component)
+    public static function index($component)
     {
         return view('admin.config', [
             'routeName' => $component
