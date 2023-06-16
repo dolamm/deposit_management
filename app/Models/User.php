@@ -73,8 +73,7 @@ class User extends Authenticatable
     public function accountHistory(){
         return $this->hasMany(AccountHistory::class, 'account_number', 'phone');
     }
-
-    public function ListSotietkiem(){
-        return $this->hasMany(Sotietkiem::class, 'user_id', 'id');
+    public function passBook(){
+        return $this->hasMany(sotietkiem::class, 'user_id', 'id');
     }
 }

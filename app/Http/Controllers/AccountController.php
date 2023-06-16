@@ -26,7 +26,7 @@ class AccountController extends Controller
         // reserver data
         // format datetime
         //sum of all sodu in sotietkiem
-        $sotietkiem = $user->ListSotietkiem()->get();
+        $sotietkiem = $user->passBook()->get();
         $sodu = 0;
         foreach ($sotietkiem as $key => $value) {
             $sodu += $value->sodu;
