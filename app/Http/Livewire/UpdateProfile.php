@@ -12,7 +12,7 @@ class UpdateProfile extends Component
             'name'=>'update-user-profile',
             'description'=>'Cập nhật thông tin cá nhân',
             'title' => 'Cập nhật thông tin cá nhân',
-            'role' =>['admin', 'officer'],
+            'permission' =>['admin', 'officer'],
         ],
     ];
     public function mount($id){
