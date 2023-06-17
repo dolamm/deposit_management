@@ -1,8 +1,8 @@
 <div>
     <!-- search user -->
-    <div class="form-group">
-        <label for="searchTerm">Tìm kiếm khách hàng</label>
-        <input wire:model="searchTerm" type="text" class="form-control" id="searchTerm" placeholder="Nhập số điện thoại, CMND hoặc họ tên" wire:keydown.enter="searchUser">
+    <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="addon-wrapping"><i class="bi bi-search-heart-fill"></i></span>
+        <input wire:model="searchTerm" type="text" class="form-control" placeholder="tên kh, số điện thoại" aria-label="Username" aria-describedby="addon-wrapping" wire:keydown.enter="searchUser">
     </div>
     <!-- end search user -->
     <!-- list user -->
@@ -21,8 +21,9 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h5 class="mb-1">{{$item->fullname}}</h5>
-                                    <p class="mb-2 pb-1" style="color: #2b2a2a;">{{$item->role->title}}</p>
+                                    <!-- <p class="mb-2 pb-1" style="color: #2b2a2a;">{{$item->role->title}}</p> -->
                                     <p class="mb-2 pb-1" style="color: #2b2a2a;">Ngày sinh: {{$item->birthday}}</p>
+                                    <p class="mb-2 pb-1" style="color: #2b2a2a;">CMND/CCCD: {{$item->cmnd_cccd}}</p>
                                     <p class="mb-2 pb-1" style="color: #2b2a2a;">Địa chỉ: {{$item->address}}</p>
                                     <p class="mb-2 pb-1" style="color: #2b2a2a;">Số điện thoại: {{$item->phone}}</p>
                                     <!-- <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">

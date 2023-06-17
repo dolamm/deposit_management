@@ -33,7 +33,6 @@ class SysConfig extends Component
     ];
     public $config;
     public $value;
-
     public function render()
     {
         if (Gate::allows('sys-config')) {
@@ -52,12 +51,13 @@ class SysConfig extends Component
         'value.*.giatri' => [
             'required',
             'numeric',
+            'min:1',
         ],
     ];
 
     protected $messages = [
         'value.*.giatri.required' => 'Giá trị không được để trống',
-        // 'value.*.giatri.min' => 'Giá trị không được nhỏ hơn 1',
+        'value.*.giatri.min' => 'Giá trị không được nhỏ hơn 1',
         'value.*.giatri.numeric' => 'Giá trị phải là số',
     ];
     public function updated($propertyName)

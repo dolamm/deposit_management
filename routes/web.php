@@ -9,9 +9,8 @@ use App\Models\Route as RouteModel;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\BcDoanhSoController;
 use App\Http\Controllers\BcSLSoController;
-use App\Http\Livewire\Profile;
-use App\Http\Livewire\Test;
 use App\Http\Livewire\UpdateProfile;
+use App\Http\Livewire\UserPassbook;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +32,7 @@ Route::get('/{component}', [RouteController::class, 'index']);
 
 Route::get('/add-pass-book/{id}', AddPassBook::class)->name('add-passbook');
 Route::get('/update-profile/{id}', UpdateProfile::class)->name('update-profile');
+Route::get('/user-passbook/{id}', UserPassbook::class)->name('user-passbook');
 // Route::get('/sys-config', [RouteController::class, 'index'])->name('config');
 // Route::get('/home', [RouteController::class, 'index'])->name('home');
 // Route::get('/list-user', [RouteController::class, 'index'])->name('list-user');

@@ -65,7 +65,7 @@
                                     <a href="{{route('add-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Mở Sổ Tiết Kiệm</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('user-passbook')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí Sổ Tiết Kiệm</span></a>
+                                    <a href="{{route('user-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí Sổ Tiết Kiệm</span></a>
                                 </li>
                                 <li>
                                     <a href="{{route('list-passbook')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí</span></a>

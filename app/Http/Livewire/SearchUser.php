@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Crypt;
 class SearchUser extends Component
 {
     public $user;
@@ -18,8 +18,8 @@ class SearchUser extends Component
     {
         //phone or cmnd/cccd or fullname
         $this->user = User::where('phone', 'like', '%' . $this->searchTerm . '%')
-            ->orWhere('cmnd/cccd', 'like', '%' . $this->searchTerm . '%')
             ->orWhere('fullname', 'like', '%' . $this->searchTerm . '%')
+            // ->orWhere('cmnd_cccd','like','%' . Crypt::encryptString($this->searchTerm) . '%')
             ->get();
     }
 

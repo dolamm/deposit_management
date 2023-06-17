@@ -14,26 +14,41 @@
             <tbody>
                 @foreach ($config as $index => $item)
                 <tr>
-                    <form wire:submit.prevent="update('{{$item->key}}')">
-                        <th scope="row">{{$index}}</th>
-                        <td>{{$item->tengiatri}}</td>
-                        <td>{{$item->mota}}</td>
-                        <td>{{$item->giatri}}</td>
-                        <td>
-                            <input type="text" wire:model="value.{{$item->key}}.giatri" class="form-control">
-                            @error("value.".$item->key.".giatri")
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </td>
-                        <td>
-                            <!-- if error hidden button-->
-                            <!-- input == null -->
-                            <button @if ($errors->has("value.".$item->key.".giatri")) disabled @endif
-                                type="submit" class="btn btn-primary">
-                                Cap Nhat
-                            </button>
-                        </td>
-                    </form>
+                    <th scope="row">{{$index}}</th>
+                    <td>{{$item->tengiatri}}</td>
+                    <td>{{$item->mota}}</td>
+                    <td>{{$item->giatri}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{$item->key}}-edit">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <!-- Modal -->
+                        <div wire:ignore.self class="modal fade" id="{{$item->key}}-edit" tabindex="-1" aria-labelledby="{{$item->key}}-edit" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="{{$item->key}}-edit">Chỉnh sửa: {{$item->tengiatri}}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">Giá trị mới</span>
+                                            <input type="text" class="form-control" placeholder="Giá trị mới" aria-label="giatri" wire:model="value.{{$item->key}}.giatri" aria-describedby="basic-addon1">
+                                        </div>
+                                        @error("value.".$item->key.".giatri")
+                                        <span class="text-danger">{{$message}}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" wire:click="update('{{$item->key}}')">Cập Nhật</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  -->
+                    </td>
+
                 </tr>
                 @endforeach
             </tbody>

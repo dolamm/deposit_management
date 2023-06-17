@@ -1,4 +1,12 @@
 <div>
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-user">
+        <i class="bi bi-person-plus-fill"></i> Thêm Người Dùng
+      </button>
+    </div>
+  </div>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     @foreach($listRole as $role)
     @if($role->id >= Auth::user()->role_id)
@@ -10,8 +18,8 @@
     @endif
     @endforeach
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#new-user" type="button" role="tab" aria-controls="new-user" aria-selected="false">
-        new-user
+      <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#search-user" type="button" role="tab" aria-controls="search-user" aria-selected="false">
+        Tìm Kiếm Khách Hàng
       </button>
     </li>
   </ul>
@@ -82,19 +90,33 @@
     </div>
     @endforeach
     <!-- add new user -->
-    <div class="tab-pane fade " id="new-user" role="tabpane-new-user" aria-labelledby="new-user-tab">
+    <div class="tab-pane fade " id="search-user" role="tabpane-search-user" aria-labelledby="search-user-tab">
       <div class="container-xl">
         <div class="table-responsive">
           <div class="table-wrapper">
-            <livewire:add-user />
+            <livewire:search-user />
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script>
-    $(document).ready(function() {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-  </script>
+  <!-- Modal -->
+  <div class="modal fade" id="add-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tạo người dùng mới</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <livewire:add-user />
+        </div>
+        <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+      </div>
+    </div>
+  </div>
+  <!--  -->
 </div>

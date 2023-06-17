@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Sotietkiem;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Casts\EncryptInfo;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -19,7 +20,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     const ROLE_ADMIN = 1;
-    const ROLE_USER = 2;
+    const ROLE_OFFICER = 2;
+    const ROLE_USER = 3;
     
     protected $fillable = [
         'fullname',
@@ -48,7 +50,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'cmnd_cccd' => 'encrypted',
+        'cmnd_cccd' => EncryptInfo::class,
     ];
 
     public function userRole() {
