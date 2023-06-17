@@ -48,7 +48,7 @@ class CalculateInterest extends Command
                     $sotienlai = $s->sodu * $thongtinkyhan['laisuat'] * $thongtinkyhan['thoigiannhanlai'] / 365;
                     PassBookHistory::create([
                         'sotietkiem_id' => $s->id,
-                        'loaihinh' => PassBookHistory::INTEREST,
+                        'loaigd' => PassBookHistory::INTEREST,
                         'sotien' => $sotienlai,
                     ]);
                 }
@@ -57,7 +57,7 @@ class CalculateInterest extends Command
                     $sotienlai = $s->sodu * $khongkyhan->laisuat * $khongkyhan->ngaytinhlai / 365;
                     PassBookHistory::create([
                         'sotietkiem_id' => $s->id,
-                        'loaihinh' => PassBookHistory::INTEREST,
+                        'loaigd' => PassBookHistory::INTEREST,
                         'sotien' => $sotienlai,
                     ]);
                 }

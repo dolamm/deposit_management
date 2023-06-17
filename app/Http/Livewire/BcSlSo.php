@@ -19,7 +19,7 @@ class BcSlSo extends Component
     ];
     public function mount(){
         $this->kyhan = Kyhan::all();
-        $this->bcngay = BcSoLuongSo::all();
+        $this->bcngay = BcSoLuongSo::all()->sortByDesc('ngaytao');
         // group by thang-nam and by makyhan
         $this->bcthang = BcSoLuongSo::all()->sortByDesc('ngaytao')
         ->groupBy('makyhan')

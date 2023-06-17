@@ -17,7 +17,11 @@ class PassBookHistoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'sotietkiem_id' => random_int(1, 100),
+            'loaigd' => $this->faker->randomElement(['deposit', 'withdraw', 'interest']),
+            'sotien' => $this->faker->randomFloat(/** @scrutinizer ignore-type */ 0, 0, 9999999.),
+            'ghichu' => $this->faker->text(),
+            'ngaygiaodich' => $this->faker->dateTimeBetween('-3 days', 'now'),
         ];
     }
 }

@@ -13,7 +13,7 @@ class PassBookHistory extends Model
     const WITHDRAW = 'withdraw';
     const DEPOSIT = 'deposit';
     const INTEREST = 'interest';
-    protected $fillable = ['sotietkiem_id', 'sotien', 'soducu', 'sodumoi', 'loaihinh', 'ghichu'];
+    protected $fillable = ['sotietkiem_id', 'sotien', 'soducu', 'sodumoi', 'loaigd', 'ghichu'];
 
     public function sotietkiem()
     {

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Casts\AsArrayObject;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Casts\Json;
 class Sotietkiem extends Model
 {
@@ -25,5 +25,10 @@ class Sotietkiem extends Model
     public function kyhan()
     {
         return $this->belongsTo(Kyhan::class,'makyhan','makyhan');
+    }
+
+    public function history(): HasMany
+    {
+        return $this->hasMany(PassBookHistory::class,'sotietkiem_id','id');
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pass_book_histories', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('sotietkiem_id')->unsigned();
-            $table->string('loaihinh')->comment('loai hinh giao dich')->checkIn(['deposit', 'withdraw', 'interest']);
+            $table->string('loaigd')->comment('loai hinh giao dich')->checkIn(['deposit', 'withdraw', 'interest']);
             $table->float('sotien', 30, 5)->default(0);
             $table->float('soducu', 30, 5)->default(0);
             $table->float('sodumoi', 30,5)->default(0);

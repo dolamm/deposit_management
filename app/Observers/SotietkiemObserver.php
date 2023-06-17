@@ -20,7 +20,7 @@ class SotietkiemObserver
 
         PassBookHistory::create([
             'sotietkiem_id' => $sotietkiem->id,
-            'loaihinh' => PassBookHistory::DEPOSIT,
+            'loaigd' => PassBookHistory::DEPOSIT,
             'sotien' => $sotietkiem->sotiengui,
             'ngaygiaodich' => $sotietkiem->ngaymoso,
         ]);
@@ -31,8 +31,7 @@ class SotietkiemObserver
      */
     public function updated(Sotietkiem $sotietkiem): void
     {
-        //get value before update
-        
+        //
     }
 
     /**
