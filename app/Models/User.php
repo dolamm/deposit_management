@@ -48,6 +48,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'cmnd_cccd' => 'encrypted',
     ];
 
     public function userRole() {
