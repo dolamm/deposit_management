@@ -90,7 +90,7 @@
                         @endcan
                         <li>
                             <a href="{{route('list-user')}}" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Khách Hàng</span> </a>
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Thông Tin Người Dùng</span> </a>
                         </li>
                         <li>
                             <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
