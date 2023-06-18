@@ -1,0 +1,82 @@
+<div>
+    <div class="d-flex flex-row-reverse">
+        <div class="p-2">
+        <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-rule">
+                <i class="bi bi-file-earmark-ruled"></i> Thêm Kỳ Hạn
+            </button>
+        </div>
+
+        <div wire:ignore.self class="modal fade" id="add-rule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Vui lòng nhập thông tin kỳ hạn</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div class="form-group">
+                            <label for="laisuat">Mã kỳ hạn</label>
+                            <input wire:model="new_kyhan.makyhan" type="text" class="form-control" id="laisuat" placeholder="Nhập mã kỳ hạn">
+                            @error('new_kyhan.makyhan') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="laisuat">Tên kỳ hạn</label>
+                            <input wire:model="new_kyhan.tenkyhan" type="text" class="form-control" id="laisuat" placeholder="Nhập tên kỳ hạn">
+                            @error('new_kyhan.tenkyhan') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="laisuat">Lãi suất kỳ hạn (%)</label>
+                            <input wire:model="new_kyhan.laisuat" type="text" class="form-control" id="laisuat" placeholder="Nhập lãi suất">
+                            @error('new_kyhan.laisuat') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="thoigiannhanlai">Thời gian nhận lãi (ngày)</label>
+                            <input wire:model="new_kyhan.thoigiannhanlai" type="text" class="form-control" id="thoigiannhanlai" placeholder="Nhập thời gian nhận lãi">
+                            @error('new_kyhan.thoigiannhanlai') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="close_modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" wire:click="add_kyhan">Lưu kỳ hạn</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-2"><h1>Danh Sách Kỳ Hạn</h1></div>
+    </div>
+    @foreach ($kyhan_all as $kyhan)
+        <p> Tên kỳ hạn : {{ $kyhan->tenkyhan }}</p>
+        <p> Lãi suất kỳ hạn : {{ $kyhan->laisuat }}</p>
+        <p> Thời gian nhận lãi : {{ $kyhan->thoigiannhanlai }}</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit{{$kyhan->makyhan}}">Chỉnh sửa</button>
+        <hr>
+
+        <div wire:ignore.self class="modal fade" id="edit{{$kyhan->makyhan}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa chi tiết</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div class="form-group">
+                            <label for="laisuat">Lãi suất</label>
+                            <input wire:model="val.laisuat" type="text" class="form-control" id="laisuat" placeholder="Nhập lãi suất">
+                            @error('val.laisuat') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="thoigiannhanlai">Thời gian nhận lãi (tháng)</label>
+                            <input wire:model="val.thoigiannhanlai" type="text" class="form-control" id="thoigiannhanlai" placeholder="Nhập thời gian nhận lãi">
+                            @error('val.thoigiannhanlai') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="close_modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary" wire:click="edit_kyhan({{ $kyhan->id }})">Lưu thay đổi</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
