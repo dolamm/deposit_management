@@ -13,7 +13,14 @@ class SearchUser extends Component
     {
         $this->user = User::all();
     }
-    
+    const permission = [
+        'search-user' =>[
+            'name' => 'search-user',
+            'description' => 'Tìm kiếm người dùng',
+            'title' => 'Tìm kiếm người dùng',
+            'permission' => ['admin','officer'],
+        ],
+    ];
     public function searchUser()
     {
         //phone or cmnd/cccd or fullname

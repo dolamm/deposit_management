@@ -45,7 +45,7 @@
     </div>
     <div class="form-group">
         <label for="birthday">Birthday</label>
-        <input type="datetime-local" class="form-control" id="birthday" wire:model="user.birthday">
+        <input type="date-local" class="form-control" id="birthday" wire:model="user.birthday">
         @error('user.birthday') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <!-- button submit -->

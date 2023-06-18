@@ -15,6 +15,12 @@ class EditPermission extends Component
         'name' => 'edit-permission',
     ];
     const permission = [
+        'view' => [
+            'title' => 'Xem quyền',
+            'description' => 'Xem quyền của vai trò',
+            'name' => 'view-permission',
+            'permission' => ['admin'],
+        ],
         'edit-permission' => [
             'title' => 'Cập nhật quyền',
             'description' => 'Cập nhật quyền cho vai trò',

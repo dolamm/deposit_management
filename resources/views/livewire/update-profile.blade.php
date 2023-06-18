@@ -154,26 +154,44 @@
             </div>
         </div>
         <!-- edit profile popup-->
-        <div class="modal fade" id="edit-profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div wire:ignore.self class="modal fade" id="edit-profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="">
-                        <div class="modal-body">
-                            <!-- edit profile -->
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1">Fullname</span>
-                                <input wire:model="user.fullname" name="fullname" type="text" value="{{$user->fullname}}" class="form-control" aria-label="Fullname" aria-describedby="basic-addon1" />
-                            </div>
+                    <div class="modal-body">
+                        <!-- edit profile -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-vcard-fill"></i></span>
+                            <input wire:model="edituser.fullname" name="fullname" type="text" class="form-control" aria-label="Fullname" aria-describedby="basic-addon1" />
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-phone-fill"></i></span>
+                            <input wire:model="edituser.phone" type="text" class="form-control" placeholder="số điện thoại" aria-label="phone" aria-describedby="basic-addon1">
                         </div>
-                    </form>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-bounding-box"></i></span>
+                            <input wire:model="edituser.cmnd_cccd" type="text" class="form-control" placeholder="cmnd/cccd" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-house-gear-fill"></i></span>
+                            <input wire:model="edituser.address" type="text" class="form-control" placeholder="địa chỉ" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar2-day-fill"></i></span>
+                            <input wire:model="edituser.birthday" type="date" class="form-control" placeholder="sinh ngày" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+                            <input wire:model="edituser.avatar" type="text" class="form-control" placeholder="avatar url" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" wire:click="updateUser" data-bs-dismiss="modal">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>

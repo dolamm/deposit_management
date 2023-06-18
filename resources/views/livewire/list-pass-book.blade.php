@@ -10,8 +10,8 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Loại Tiết Kiệm</th>
-                    <th scope="col">Khách Hàng</th>
                     <th scope="col">Lãi Suất</th>
+                    <th scope="col">Khách Hàng</th>
                     <th scope="col">Số Dư</th>
                     <th scope="col">Trạng Thái</th>
                 </tr>
@@ -25,7 +25,7 @@
                         {{$item->thongtinkyhan['tenkyhan']}}
                     </td>
                     <td>
-                        {{$item->thongtinkyhan['laisuat']*100}}%
+                        {{$item->thongtinkyhan['laisuat']}}%
                     </td>
                     <td>
                         {{$item->khachhang->fullname}}
@@ -74,6 +74,7 @@
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Loại giao dịch</th>
+                                                    <th scope="col">Ngày thực hiện</th>
                                                     <th scope="col">Số tiền</th>
                                                 </tr>
                                             </thead>
@@ -95,6 +96,9 @@
                                                         <span class="badge bg-primary">Tiền lãi</span>
                                                         @break
                                                         @endswitch
+                                                    </td>
+                                                    <td>
+                                                        {{$history->ngaygiaodich}}
                                                     </td>
                                                     <td>
                                                         {{$history->sotien}}

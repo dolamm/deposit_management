@@ -24,7 +24,7 @@
                             </div>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{$k->makyhan}}-thang">
-                                {{ $k->tenkyhan }}
+                                Chi tiết {{ $k->tenkyhan }}
                             </button>
                         </div>
                         <!-- Modal -->
@@ -32,7 +32,7 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="{{$k->makyhan}}-thang">Bao cao{{ $k->tenkyhan }}</h5>
+                                        <h5 class="modal-title" id="{{$k->makyhan}}-thang">Báo cáo {{ $k->tenkyhan }}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">

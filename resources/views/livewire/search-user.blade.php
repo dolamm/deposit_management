@@ -41,8 +41,8 @@
                                             </div>
                                         </div> -->
                                     <div class="d-flex pt-1">
-                                        <a type="button" class="btn btn-outline-primary me-1 flex-grow-1" href="{{route('add-passbook', $item->id)}}">Mo So Tiet Kiem</a>
-                                        <button type="button" class="btn btn-primary flex-grow-1">Follow</button>
+                                        <a type="button" class="btn btn-outline-primary me-1 flex-grow-1" href="{{route('add-passbook', $item->id)}}">Mở Sổ tiết kiệm</a>
+                                        <a type="button" class="btn btn-primary flex-grow-1" href="{{route('user-passbook', $item->id)}}">Xem Danh Sách Sổ</a>
                                         <!-- <button type="button" class="btn btn-primary flex-grow-1"><a href="/test/{{$item->id}}">Xem chi tiết</a></button> -->
                                     </div>
                                 </div>

@@ -15,7 +15,7 @@ class Sotietkiem extends Model
     protected $table = 'sotietkiem';
     const CREATED_AT = 'ngaymoso';
     const UPDATED_AT = 'ngaycapnhat';
-    protected $fillable = ['thongtinkyhan', 'sotiengui', 'makyhan'];
+    protected $fillable = ['thongtinkyhan', 'sotiengui', 'makyhan', 'user_id'];
     const STATUS = [
         0 => 'Đã đóng sổ',
         1 => 'Đã đến hạn',

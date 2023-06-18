@@ -18,7 +18,7 @@
     <!-- Scripts -->
     @livewireStyles
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    
+
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
@@ -37,11 +37,11 @@
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            <a href="/" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
@@ -52,29 +52,32 @@
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                            <a href="{{route('quanli-kyhan')}}" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Quản lí kỳ hạn</span></a>
                         </li>
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-piggy-bank-fill"></i><span class="ms-1 d-none d-sm-inline">Sổ Tiết Kiệm</span></a>
+                                <i class="fs-4 bi-piggy-bank-fill"></i><span class="ms-1 d-none d-sm-inline">Sổ Tiết Kiệm</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="{{route('add-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Mở Sổ Tiết Kiệm</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('user-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí Sổ Tiết Kiệm</span></a>
+                                    <a href="{{route('user-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Sổ Tiết Kiệm Của Tôi</span></a>
                                 </li>
+                                @can('admin-officer')
                                 <li>
-                                    <a href="{{route('list-passbook')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí</span></a>
+                                    <a href="{{route('list-passbook')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí Sổ Tiết Kiệm</span></a>
                                 </li>
+                                @endcan
                             </ul>
                         </li>
+                        @can('view-report')
                         <li>
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-clipboard-data-fill"></i><span class="ms-1 d-none d-sm-inline">Bao Cao</span> </a>
+                                <i class="fs-4 bi-clipboard-data-fill"></i><span class="ms-1 d-none d-sm-inline">Báo cáo</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="{{route('bcdoanhso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Báo Cáo Doanh Số</span></a>
@@ -84,6 +87,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @endcan
                         <li>
                             <a href="{{route('list-user')}}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Khách Hàng</span> </a>
@@ -91,7 +95,7 @@
                         <li>
                             <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
                                 <i class="fs-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">Cài Đặt Hệ Thống</span></a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+                            <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="{{route('system-config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Thông Số Hệ Thống</span></a>
                                 </li>

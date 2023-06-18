@@ -42,6 +42,10 @@ class PassbookDeposit extends Component
             $validator->after(function ($validator) use ($minvalue){
                 if($this->data['deposit-money'] < $minvalue){
                     $validator->errors()->add('data.deposit-money', 'Số tiền phải lớn hơn '.$minvalue);
+                    $this->dispatchBrowserEvent('alert', [
+                        'type' => 'error',
+                        'message' => 'Số tiền phải lớn hơn '.$minvalue
+                    ]);
                 }
             });
         });

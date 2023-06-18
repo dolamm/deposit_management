@@ -22,11 +22,14 @@ class KyhanManager extends Component
             'permission' => ['admin'],
         ],
     ];
-
+    const route = [
+        'name' => 'quanli-kyhan',
+        'component' => 'kyhan-manager',
+        'route' => '/kyhan-manager'
+    ];
     public $kyhan_all;
     public kyhan $new_kyhan;
     public $val;
-    public $editMode = false;
     public $laisuat;
     public $thoigiannhanlai;
 
@@ -42,7 +45,7 @@ class KyhanManager extends Component
         ],
         'new_kyhan.makyhan' => 'required|unique:kyhan,makyhan',
         'new_kyhan.tenkyhan' => 'required|unique:kyhan,tenkyhan',
-        'new_kyhan.laisuat' => 'required|numeric|min:0|max:100',
+        'new_kyhan.laisuat' => 'required|numeric|min:1|max:100',
         'new_kyhan.thoigiannhanlai' => 'required|numeric',
     ];
 
@@ -60,7 +63,6 @@ class KyhanManager extends Component
 
     public function edit_kyhan($key){
         if(Gate::allows('kyhan-update')){
-            $this->editMode = true;
             $kyhan = kyhan::find($key);
             $kyhan->laisuat = $this->val['laisuat'];
             $kyhan->thoigiannhanlai = $this->val['thoigiannhanlai'];
@@ -79,7 +81,6 @@ class KyhanManager extends Component
     }
 
     public function close_modal(){
-        $this->editMode = false;
         $this->val = null;
         $this->laisuat = null;
         $this->thoigiannhanlai = null;
@@ -116,11 +117,6 @@ class KyhanManager extends Component
 
     public function render()
     {
-        if(Gate::allows('kyhan-view')){
             return view('livewire.kyhan-manager');
-        }
-        else{
-            return view('errors.not_permission');
-        }
     }
 }

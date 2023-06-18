@@ -42,6 +42,10 @@ class PassbookWithdraw extends Component
             $validator->after(function ($validator) use ($money){
                 if($money > $this->sotietkiem->sodu){
                     $validator->errors()->add('data.withdraw-money', 'Số tiền rút không được lớn hơn số dư');
+                    $this->dispatchBrowserEvent('alert', [
+                        'type' => 'error',
+                        'message' => 'Số tiền rút không được lớn hơn số dư',
+                    ]);
                 }
             });
         });
@@ -55,7 +59,7 @@ class PassbookWithdraw extends Component
             AccountHistory::create([
                 'account_number' => $this->sotietkiem->khachhang->phone,
                 'amount' => $money,
-                'type' => AccountHistory::TYPE_WITHDRAW,
+                'type' => AccountHistory::TYPE_DEPOSIT,
                 'description' => 'Rút tiền từ sổ tiết kiệm '.$this->sotietkiem->id,
             ]);
         }

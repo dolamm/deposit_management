@@ -17,11 +17,13 @@
     </li>
     @endif
     @endforeach
+    @can('search-user')
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#search-user" type="button" role="tab" aria-controls="search-user" aria-selected="false">
         Tìm Kiếm Khách Hàng
       </button>
     </li>
+    @endcan
   </ul>
   <div class="tab-content" id="myTabContent">
     @foreach($listRole as $index => $role)
@@ -60,9 +62,9 @@
                   </td>
                   <td><span class="status text-success">&bull;</span>Active</td>
                   <td>
-                    <button href="#" class="btn btn-outline-primary" title="Settings" data-toggle="tooltip">
+                    <a type="button" href="{{route('update-profile', $user->id)}}" class="btn btn-outline-primary" title="chỉnh sửa thông tin cá nhân" data-toggle="tooltip">
                       <i class="bi bi-pencil-square"></i>
-                    </button>
+                    </a>
                     <button href="#" class="btn btn-outline-danger" title="Delete" data-toggle="tooltip" wire:click="deleteUser({{$user->id}})">
                       <i class="bi bi-x-octagon-fill"></i>
                     </button>
