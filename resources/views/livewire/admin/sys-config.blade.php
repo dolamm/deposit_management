@@ -41,14 +41,13 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" wire:click="update('{{$item->key}}')">Cập Nhật</button>
+                                        <button type="submit" class="btn btn-primary" wire:click="update('{{$item->key}}')" @if($errors->any()) disabled @endif>Cập Nhật</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!--  -->
                     </td>
-
                 </tr>
                 @endforeach
             </tbody>

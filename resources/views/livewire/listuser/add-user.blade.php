@@ -50,6 +50,10 @@
         @error('user.birthday') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <!-- button submit -->
-    <button type="submit" class="btn btn-primary" wire:click="addUser">Submit</button>
+    <!-- any error hidden button-->
+    
+    <button type="submit" class="btn btn-primary" wire:click="addUser"
+    @if($errors->any()) disabled @endif>Tạo người dùng</button>
+
 </div>
 </div>

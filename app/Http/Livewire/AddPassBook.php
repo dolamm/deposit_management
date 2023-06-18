@@ -38,8 +38,10 @@ class AddPassBook extends Component
     protected $rules = [
         'passbook.sotiengui' => 'required|numeric',
         'passbook.makyhan' => 'required',
+        'data.hinhthucguitien' => 'required'
     ];
     protected $messages = [
+        'data.hinhthucguitien.required' => 'Không được để trống',
         'passbook.*.required' => 'Không được để trống',
         'passbook.*.numeric' => 'Phải là số',
     ];
