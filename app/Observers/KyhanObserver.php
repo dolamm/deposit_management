@@ -15,7 +15,7 @@ class KyhanObserver
         $lsKyhan = new LsKyhan();
         $lsKyhan->kyhan_id = $kyhan->id;
         $lsKyhan->laisuatcu = 0;
-        $lsKyhan->laisuatmoi = $kyhan->laisuatmoi;
+        $lsKyhan->laisuatmoi = $kyhan->laisuat;
         $lsKyhan->save();
     }
 
@@ -26,8 +26,8 @@ class KyhanObserver
     {
         $lsKyhan = new LsKyhan();
         $lsKyhan->kyhan_id = $kyhan->id;
-        $lsKyhan->laisuatcu = $kyhan->laisuatcu;
-        $lsKyhan->laisuatmoi = $kyhan->laisuatmoi;
+        $lsKyhan->laisuatcu = $kyhan->getOriginal('laisuat');
+        $lsKyhan->laisuatmoi = $kyhan->laisuat;
         $lsKyhan->save();
     }
 
