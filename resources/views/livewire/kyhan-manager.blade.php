@@ -1,17 +1,15 @@
 <div>
-    <div class="d-flex justify-content-start">
-        <div class="p-2">
-            <h1>Danh Sách Kỳ Hạn</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Danh Sách Kỳ Hạn</h1>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary d-block float-end" data-bs-toggle="modal" data-bs-target="#add-rule">
+                    <i class="bi bi-file-earmark-ruled"></i> Thêm Kỳ Hạn
+                </button>
+            </div>
         </div>
-        <div class="d-flex flex-row-reverse">
-        <div class="p-2">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-rule">
-                <i class="bi bi-file-earmark-ruled"></i> Thêm Kỳ Hạn
-            </button>
-        </div>
-    </div>
-    
         <div wire:ignore.self class="modal fade" id="add-rule" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

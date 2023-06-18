@@ -1,9 +1,11 @@
 <div>
-  <h1>Danh Sách Người Dùng</h1>
-  <div class="d-flex flex-row-reverse">
-    <div class="p-2">
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-user">
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h1>Danh Sách Người Dùng</h1>
+    </div>
+    <div class="col d-block">
+    <button type="button" class="btn btn-primary d-block float-end" data-bs-toggle="modal" data-bs-target="#add-user">
         <i class="bi bi-person-plus-fill"></i> Thêm Người Dùng
       </button>
     </div>
