@@ -134,7 +134,9 @@
                                             <h4 class="alert-heading">Chú ý!</h4>
                                             <p>Đối với các sổ không thuộc không kỳ hạn khi nạp thêm tiền sẽ tự động tạo sổ mới với cùng kỳ hạn</p>
                                         </div>
-                                        <livewire:passbook-deposit :sotietkiem="$item" />
+                                        <div wire:ignore>
+                                            <livewire:passbook-deposit :sotietkiem="$item" />
+                                        </div>
                                     </div>
                                     <!-- <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -157,7 +159,9 @@
                                             <h4 class="alert-heading">Chú ý!</h4>
                                             <p>Đối với các sổ không phải không kỳ hạn sẽ tự động rút toàn bộ tiền</p>
                                         </div>
-                                        <livewire:passbook-withdraw :sotietkiem="$item" />
+                                        <div wire:ignore>
+                                            <livewire:passbook-withdraw :sotietkiem="$item" />
+                                        </div>
                                     </div>
                                     <!-- <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -181,7 +185,7 @@
                                             <h4 class="alert-heading">Chú ý!</h4>
                                             <p>Sẽ rút toàn bộ só dư sang kỳ hạn mới</p>
                                         </div>
-                                        <livewire:renew-passbook :sotietkiem="$item" />
+                                        <div wire:ignore><livewire:renew-passbook :sotietkiem="$item" /></div>
                                     </div>
                                     <!-- <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

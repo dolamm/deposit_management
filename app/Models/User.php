@@ -34,6 +34,13 @@ class User extends Authenticatable
         'avatar',
     ];
 
+    protected $searchable = [
+        'fullname',
+        'email',
+        'phone',
+        'cmnd_cccd'
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *

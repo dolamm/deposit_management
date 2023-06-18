@@ -26,7 +26,7 @@ class SearchUser extends Component
         //phone or cmnd/cccd or fullname
         $this->user = User::where('phone', 'like', '%' . $this->searchTerm . '%')
             ->orWhere('fullname', 'like', '%' . $this->searchTerm . '%')
-            // ->orWhere('cmnd_cccd','like','%' . Crypt::encryptString($this->searchTerm) . '%')
+            ->orWhere('cmnd_cccd','like','%' . $this->searchTerm . '%')
             ->get();
     }
 
