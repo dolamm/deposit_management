@@ -57,13 +57,12 @@
                             <i class="bi bi-arrow-bar-down"></i>
                         </button>
                         <button @if (!$item->cotherut()) disabled @endif type="button" class="btn btn-info"
-                        data-bs-toggle="modal" data-bs-target="#renew-{{$item->id}}"
-                        title="thay đổi kỳ hạn" data-toggle="tooltip">
+                            data-bs-toggle="modal" data-bs-target="#renew-{{$item->id}}"
+                            title="thay đổi kỳ hạn" data-toggle="tooltip">
                             <i class="bi bi-arrow-clockwise"></i>
                         </button>
                         @endif
-                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#history-{{$item->id}}"
-                        title="xem lịch sử" data-toggle="tooltip">
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#history-{{$item->id}}" title="xem lịch sử" data-toggle="tooltip">
                             <i class="bi bi-eye-fill"></i>
                         </button>
                         <!-- history -->
@@ -145,7 +144,7 @@
                             </div>
                         </div>
                         <!-- Withdraw Modal -->
-                        <div  wire:ignore.self class="modal fade" id="withdraw-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div wire:ignore.self class="modal fade" id="withdraw-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -169,7 +168,7 @@
                         </div>
                         <!--  -->
                         <!-- Renew Modal -->
-                        <div  wire:ignore.self class="modal fade" id="renew-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div wire:ignore.self class="modal fade" id="renew-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

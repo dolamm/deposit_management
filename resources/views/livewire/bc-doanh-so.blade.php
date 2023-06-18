@@ -1,4 +1,5 @@
 <div>
+<h2 class="mb-5">Báo cáo doanh số</h2>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="bcngay-tab" data-bs-toggle="tab" data-bs-target="#bcngay" type="button" role="tab" aria-controls="bcngay" aria-selected="true">Ngày</button>

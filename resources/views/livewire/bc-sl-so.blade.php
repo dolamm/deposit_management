@@ -1,4 +1,5 @@
 <div>
+<h2 class="mb-5">Báo cáo số lượng sổ</h2>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="sl-so-ngay-tab" data-bs-toggle="tab" data-bs-target="#sl-so-ngay" type="button" role="tab" aria-controls="sl-so-ngay" aria-selected="true">Ngày</button>
