@@ -20,7 +20,7 @@ class SotietkiemFactory extends Factory
             'user_id' => random_int(1, 11),
             'makyhan' => Kyhan::all()->random()->makyhan,
             'sotiengui' => $this->faker->randomFloat(/** @scrutinizer ignore-type */ 0, 0, 9999999.),
-            'ngaymoso' => $this->faker->dateTimeBetween('-3 days', 'now'),
+            'ngaymoso' => $this->faker->dateTimeBetween('-1 years', 'now'),
         ];
     }
 }

@@ -49,7 +49,8 @@
                             data-bs-toggle="modal" data-bs-target="#deposit-{{$item->id}}">
                             <i class="bi bi-plus-circle-fill"></i>
                         </button>
-                        <button @if (!$item->cotherut()) disabled @endif type="button" class="btn btn-success">
+                        <button @if (!$item->cotherut()) disabled @endif type="button" class="btn btn-success"
+                            data-bs-toggle="modal" data-bs-target="#withdraw-{{$item->id}}">
                             <i class="bi bi-arrow-bar-down"></i>
                         </button>
                         <button @if (!$item->cotherut()) disabled @endif type="button" class="btn btn-info">
@@ -115,10 +116,15 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Nạp tiền</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+                                        <!-- warining -->
+                                        <div class="alert alert-warning" role="alert">
+                                            <h4 class="alert-heading">Chú ý!</h4>
+                                            <p>Đối với các sổ không thuộc không kỳ hạn khi nạp thêm tiền sẽ tự động tạo sổ mới với cùng kỳ hạn</p>
+                                        </div>
                                         <livewire:passbook-deposit :sotietkiem="$item" />
                                     </div>
                                     <!-- <div class="modal-footer">
@@ -128,8 +134,30 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Withdraw Modal -->
+                        <div  wire:ignore.self class="modal fade" id="withdraw-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Rút tiền</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- warining -->
+                                        <div class="alert alert-warning" role="alert">
+                                            <h4 class="alert-heading">Chú ý!</h4>
+                                            <p>Đối với các sổ không phải không kỳ hạn sẽ tự động rút toàn bộ tiền</p>
+                                        </div>
+                                        <livewire:passbook-withdraw :sotietkiem="$item" />
+                                    </div>
+                                    <!-- <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
                         <!--  -->
-
                     </td>
                 </tr>
                 @endforeach

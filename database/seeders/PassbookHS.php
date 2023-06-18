@@ -13,7 +13,7 @@ class PassbookHS extends Seeder
     public function run(): void
     {
         PassBookHistory::factory()
-            ->count(100)
+            ->count(200)
             ->create();
     }
 }

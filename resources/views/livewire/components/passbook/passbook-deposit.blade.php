@@ -1,9 +1,9 @@
 <div>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1"><i class="bi bi-cash-stack"></i></span>
-        <input wire:model="data.money" type="text" class="form-control" placeholder="số tiền cân nạp thêm" aria-label="money" aria-describedby="basic-addon1">
+        <input wire:model="data.deposit-money" type="text" class="form-control" placeholder="số tiền cân nạp thêm" aria-label="money" aria-describedby="basic-addon1">
     </div>
-    @error('data.money')
+    @error('data.deposit-money')
     <div class="alert alert-danger" role="alert">
         {{$message}}
     </div>
@@ -23,6 +23,6 @@
     @enderror
     <div class="modal-footer">
         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-        <button type="button" class="btn btn-primary" wire:click="deposit">Save changes</button>
+        <button type="button" class="btn btn-primary" wire:click="deposit" data-bs-dismiss="modal">Save changes</button>
     </div>
 </div>

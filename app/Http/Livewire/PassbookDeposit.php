@@ -23,12 +23,12 @@ class PassbookDeposit extends Component
     }
 
     protected $rules = [
-        'data.money' => 'required|numeric',
+        'data.deposit-money' => 'required|numeric',
         'data.hinhthucguitien' => 'required',
     ];
     protected $messages =[
         'data.*.required' => 'Không được để trống',
-        'data.money.numeric' => 'Phải là số',
+        'data.deposit-money.numeric' => 'Phải là số',
     ];
 
     public function updated($propertyName)
@@ -40,8 +40,8 @@ class PassbookDeposit extends Component
         $minvalue = Config::find(2)->giatri;
         $this->withValidator(function (Validator $validator) use ($minvalue){
             $validator->after(function ($validator) use ($minvalue){
-                if($this->data['money'] < $minvalue){
-                    $validator->errors()->add('data.money', 'Số tiền phải lớn hơn '.$minvalue);
+                if($this->data['deposit-money'] < $minvalue){
+                    $validator->errors()->add('data.deposit-money', 'Số tiền phải lớn hơn '.$minvalue);
                 }
             });
         });
@@ -49,15 +49,15 @@ class PassbookDeposit extends Component
         if($this->sotietkiem->thongtinkyhan['giahan'] == 1){
             PassBookHistory::create([
                 'sotietkiem_id' => $this->sotietkiem->id,
-                'sotien' => $this->data['money'],
+                'sotien' => $this->data['deposit-money'],
                 'loaigd' => PassBookHistory::DEPOSIT,
             ]);
         }
         else {
-            $sotien_moi = $this->sotietkiem->sodu + $this->data['money'];
+            $sotien_moi = $this->sotietkiem->sodu + $this->data['deposit-money'];
             PassBookHistory::create([
                 'sotietkiem_id' => $this->sotietkiem->id,
-                'sotien' => $this->passbook->sodu,
+                'sotien' => $this->sotietkiem->sodu,
                 'loaigd' => PassBookHistory::WITHDRAW,
                 'ghichu' => 'Làm mới sổ tiết kiệm'
             ]);
@@ -70,10 +70,10 @@ class PassbookDeposit extends Component
         }
         if($this->data['hinhthucguitien'] == 2){
             AccountHistory::create([
-                'account_number' => $this->sotietkiem->user_id->phone,
-                'sotien' => $this->data['money'],
-                'loaigd' => AccountHistory::TYPE_WITHDRAW,
-                'ghichu' => 'Gửi tiền vào sổ tiết kiệm '.$this->sotietkiem->id,
+                'account_number' => $this->sotietkiem->khachhang->phone,
+                'amount' => $this->data['deposit-money'],
+                'type' => AccountHistory::TYPE_WITHDRAW,
+                'description' => 'Gửi tiền vào sổ tiết kiệm '.$this->sotietkiem->id,
             ]);
         }
         $this->dispatchBrowserEvent('alert', [
@@ -84,7 +84,7 @@ class PassbookDeposit extends Component
 
     public function render()
     {
-        return view('livewire.passbook-deposit');
+        return view('livewire.components.passbook.passbook-deposit');
     }
 
 }
