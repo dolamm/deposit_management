@@ -18,27 +18,27 @@
     @enderror
     <div class="form-group">
         <label for="exampleInputEmail1">Hình thức nạp tiền</label>
-        <select wire:model="data.hinhthucnaptien" class="form-select" aria-label="Default select example">
+        <select wire:model="data.hinhthucguitien" class="form-select" aria-label="Default select example">
             <option selected disabled>Hình thức</option>
             @foreach($data['hinhthuc'] as $key => $value)
             <option value="{{$key}}">{{$value}}</option>
             @endforeach
         </select>
     </div>
-    @error('data.hinhthucnaptien')
+    @error('data.hinhthucguitien')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     @endif
     <div class="form-group">
         <label for="exampleInputEmail1">Chọn kỳ hạn</label>
-        <select wire:model="renew.makyhan" class="form-select" aria-label="Default select example">
+        <select wire:model="data.makyhan" class="form-select" aria-label="Default select example">
             <option selected disabled>chọn kỳ hạn</option>
             @foreach ($kyhan as $item)
             <option value="{{$item->makyhan}}">{{$item->tenkyhan}}</option>
             @endforeach
         </select>
     </div>
-    @error('renew.makyhan')
+    @error('data.makyhan')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <div class="modal-footer">

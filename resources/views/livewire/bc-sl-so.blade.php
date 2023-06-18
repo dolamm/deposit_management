@@ -1,10 +1,10 @@
 <div>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="sl-so-ngay-tab" data-bs-toggle="tab" data-bs-target="#sl-so-ngay" type="button" role="tab" aria-controls="sl-so-ngay" aria-selected="true">Ngay</button>
+      <button class="nav-link active" id="sl-so-ngay-tab" data-bs-toggle="tab" data-bs-target="#sl-so-ngay" type="button" role="tab" aria-controls="sl-so-ngay" aria-selected="true">Ngày</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="bcthang-tab" data-bs-toggle="tab" data-bs-target="#bcthang" type="button" role="tab" aria-controls="bcthang" aria-selected="false">Thang</button>
+      <button class="nav-link" id="bcthang-tab" data-bs-toggle="tab" data-bs-target="#bcthang" type="button" role="tab" aria-controls="bcthang" aria-selected="false">Tháng</button>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
@@ -98,10 +98,10 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">Ngay</th>
-                      <th scope="col">So So Moi</th>
-                      <th scope="col">So So Cu</th>
-                      <th scope="col">Chenh Lech</th>
+                      <th scope="col">Ngày tạo</th>
+                      <th scope="col">Số sổ mới</th>
+                      <th scope="col">So số đóng</th>
+                      <th scope="col">Chênh lệch</th>
                     </tr>
                   </thead>
                   <tbody>

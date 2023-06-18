@@ -58,18 +58,25 @@ class PassbookDeposit extends Component
             ]);
         }
         else {
-            $sotien_moi = $this->sotietkiem->sodu + $this->data['deposit-money'];
+            $sotien_them = $this->data['deposit-money'];
             PassBookHistory::create([
                 'sotietkiem_id' => $this->sotietkiem->id,
                 'sotien' => $this->sotietkiem->sodu,
                 'loaigd' => PassBookHistory::WITHDRAW,
                 'ghichu' => 'Làm mới sổ tiết kiệm'
             ]);
-            Sotietkiem::create([
+            $new_id = Sotietkiem::create([
                 'user_id' => $this->sotietkiem->user_id,
                 'makyhan' => $this->sotietkiem->makyhan,
-                'sotiengui' => $sotien_moi,
+                'sotiengui' => $this->sotietkiem->sodu,
                 'thongtinkyhan' => $this->sotietkiem->thongtinkyhan,
+            ]);
+
+            PassBookHistory::create([
+                'sotietkiem_id' => $new_id,
+                'sotien' => $sotien_them,
+                'loaigd' => PassBookHistory::DEPOSIT,
+                'ghichu' => 'Thêm số tiền vào sổ tiết kiệm'
             ]);
         }
         if($this->data['hinhthucguitien'] == 2){
