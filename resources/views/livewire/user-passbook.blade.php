@@ -54,13 +54,13 @@
                             <i class="bi bi-arrow-bar-down"></i>
                         </button>
                         <button @if (!$item->cotherut()) disabled @endif type="button" class="btn btn-info"
-                        title="đổi kỳ hạn" data-toggle="tooltip"
-                        >
+                        data-bs-toggle="modal" data-bs-target="#renew-{{$item->id}}"
+                        title="thay đổi kỳ hạn" data-toggle="tooltip">
                             <i class="bi bi-arrow-clockwise"></i>
                         </button>
                         @endif
                         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#history-{{$item->id}}"
-                        title="lịch sử giao dịch" data-toggle="tooltip"
+                        title="lịch sử giao" data-toggle="tooltip"
                         >
                             <i class="bi bi-eye-fill"></i>
                         </button>
@@ -166,6 +166,29 @@
                             </div>
                         </div>
                         <!--  -->
+                        <!-- Renew Modal -->
+                        <div  wire:ignore.self class="modal fade" id="renew-{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Thay đổi kỳ hạn</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- warining -->
+                                        <div class="alert alert-warning" role="alert">
+                                            <h4 class="alert-heading">Chú ý!</h4>
+                                            <p>Sẽ rút toàn bộ só dư sang kỳ hạn mới</p>
+                                        </div>
+                                        <livewire:renew-passbook :sotietkiem="$item" />
+                                    </div>
+                                    <!-- <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

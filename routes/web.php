@@ -23,7 +23,7 @@ use App\Http\Livewire\UserPassbook;
 */
 
 Auth::routes();
-Route::get('/homepage', function() {
+Route::get('/homepage', function () {
     return view('home');
 });
 Route::get('/', [HomeController::class, 'index'])->name('root');
@@ -37,13 +37,14 @@ Route::get('/user-passbook/{id}', UserPassbook::class)->name('user-passbook');
 // Route::get('/home', [RouteController::class, 'index'])->name('home');
 // Route::get('/list-user', [RouteController::class, 'index'])->name('list-user');
 // Route::get('/edit-permission', [RouteController::class, 'index'])->name('edit-permission');
+if (!app()->runningInConsole()) {
+    $routes = Cache::rememberForever('routes', function () {
+        return RouteModel::all();
+    });
 
-$routes = Cache::rememberForever('routes', function () {
-    return RouteModel::all();
-});
-
-foreach ($routes as $route) {
-    Route::get($route->route, [RouteController::class, 'index'])->name($route->name);
+    foreach ($routes as $route) {
+        Route::get($route->route, [RouteController::class, 'index'])->name($route->name);
+    }
 }
 
 Route::prefix('api')->group(function () {
