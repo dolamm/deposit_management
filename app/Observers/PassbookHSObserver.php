@@ -4,7 +4,8 @@ namespace App\Observers;
 
 use App\Models\PassBookHistory;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\PassbookHistoryNotify;
 class PassbookHSObserver
 {
     /**
@@ -12,6 +13,7 @@ class PassbookHSObserver
      */
     public function created(PassBookHistory $passBookHistory): void
     {
+        Notification::send($passBookHistory->sotietkiem->khachhang, new PassbookHistoryNotify($passBookHistory));
         $loaigd = $passBookHistory->loaigd;
         $passBookHistory->soducu = $passBookHistory->sotietkiem->sodu;
         $sotietkiem = $passBookHistory->sotietkiem;

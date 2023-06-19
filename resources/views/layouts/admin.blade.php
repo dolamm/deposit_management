@@ -88,6 +88,14 @@
                             </ul>
                         </li>
                         @endcan
+                        <li class="nav-item">
+                            <a href="{{route('user-notification')}}" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-bell-fill"></i> <span class="ms-1 d-none d-sm-inline">Thông báo</span>
+                                <span class="translate-end badge rounded-pill bg-danger">
+                                    {{Auth::user()->unreadNotifications->count()}}
+                                </span>
+                            </a>
+                        </li>
                         <li>
                             <a href="{{route('list-user')}}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Thông Tin Người Dùng</span> </a>

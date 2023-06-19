@@ -25,7 +25,7 @@ class PassbookDeposit extends Component
     protected $rules = [
         'data.deposit-money' => 'required|numeric',
         'data.hinhthucguitien' => 'required',
-    ];
+    ]; 
     protected $messages =[
         'data.*.required' => 'Không được để trống',
         'data.deposit-money.numeric' => 'Phải là số',
@@ -87,6 +87,7 @@ class PassbookDeposit extends Component
                 'description' => 'Gửi tiền vào sổ tiết kiệm '.$this->sotietkiem->id,
             ]);
         }
+        $this->emit('refreshPassbook');
         $this->dispatchBrowserEvent('alert', [
             'type' => 'success',
             'message' => 'Gửi tiền thành công',

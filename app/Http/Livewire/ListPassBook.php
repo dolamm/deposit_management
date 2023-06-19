@@ -14,6 +14,9 @@ class ListPassBook extends Component
     public $status;
     public $searchTerm;
     public $data;
+    protected $listeners = [
+        'refreshPassbook' =>'mount'
+    ];
 
     const route = [
         'name' => "list-passbook",
@@ -29,6 +32,7 @@ class ListPassBook extends Component
             'permission' =>['admin', 'officer'],
         ],
     ];
+    
     public function mount(){
         $this->status = [];
         $this->listpassbook = sotietkiem::all();

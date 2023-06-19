@@ -31,7 +31,6 @@ class SotietkiemObserver
      */
     public function updated(Sotietkiem $sotietkiem): void
     {
-        //
     }
 
     /**

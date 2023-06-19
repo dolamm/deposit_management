@@ -13,6 +13,7 @@ class PassbookWithdraw extends Component
 {
     public Sotietkiem $sotietkiem;
     public $data;
+    
     public function mount(Sotietkiem $sotietkiem){
         $this->sotietkiem = $sotietkiem;
         $this->data['hinhthuc'] = [
@@ -63,6 +64,7 @@ class PassbookWithdraw extends Component
                 'description' => 'Rút tiền từ sổ tiết kiệm '.$this->sotietkiem->id,
             ]);
         }
+        $this->emit('refreshPassbook');
         $this->dispatchBrowserEvent('alert', [
             'type' => 'success',
             'message' => 'Rút tiền thành công',

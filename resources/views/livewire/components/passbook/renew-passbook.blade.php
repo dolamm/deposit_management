@@ -42,6 +42,6 @@
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" wire:click="renew">Save changes</button>
+        <button type="button" class="btn btn-primary" wire:click="renew" data-bs-dismiss="modal">Save changes</button>
     </div>
 </div>

@@ -13,6 +13,7 @@ class RenewPassbook extends Component
     public Sotietkiem $sotietkiem;
     public $data;
     public $kyhan;
+    
     public function mount(Sotietkiem $sotietkiem)
     {
         $this->sotietkiem = $sotietkiem;
@@ -74,6 +75,7 @@ class RenewPassbook extends Component
                 'description' => 'nap them tien'
             ]);
         }
+        $this->emit('refreshPassbook');
         $this->dispatchBrowserEvent('alert', [
             'type' => 'success',
             'message' => 'Gửi tiền vào sổ tiết kiệm thành công! ' .$newID,

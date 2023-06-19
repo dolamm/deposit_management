@@ -4,9 +4,11 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Kyhan;
-use App\Models\Sotietkiem;
 use App\Models\PassBookHistory;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\SotietkiemNotify;
+use App\Models\Sotietkiem;
 class CalculateInterest extends Command
 {
     /**
@@ -37,7 +39,7 @@ class CalculateInterest extends Command
                 $ngaymoso = Carbon::parse($s->ngaymoso);
                 $ngayhientai = Carbon::now();
 
-                $thongtinkyhan = json_decode($s->thongtinkyhan, true);
+                $thongtinkyhan = $s->thongtinkyhan;
                 $thoigiannhanlai = $thongtinkyhan['thoigiannhanlai'];
 
                 $giahan = $thongtinkyhan['giahan'];
@@ -51,6 +53,12 @@ class CalculateInterest extends Command
                         'loaigd' => PassBookHistory::INTEREST,
                         'sotien' => $sotienlai,
                     ]);
+                    if($giahan == TRUE && $s->cotherut()){
+                        Notification::send($s->khachhang, new SotietkiemNotify($s, 'Bạn đã rút tiền từ sổ tiết kiệm #' . $s->id));
+                    }
+                    if($giahan == False && $s->trangthai() == Sotietkiem::STATUS[1]){
+                        Notification::send($s->khachhang, new  SotietkiemNotify($s, 'Sổ tiết kiệm #' . $s->id . 'đã đến hạn'));
+                    }
                 }
                 else if($strtoend > $thoigiannhanlai){
                     $khongkyhan = Kyhan::find(1)->first();
