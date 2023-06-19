@@ -54,7 +54,7 @@ class CalculateInterest extends Command
                         'sotien' => $sotienlai,
                     ]);
                     if($giahan == TRUE && $s->cotherut()){
-                        Notification::send($s->khachhang, new SotietkiemNotify($s, 'Bạn đã rút tiền từ sổ tiết kiệm #' . $s->id));
+                        Notification::send($s->khachhang, new SotietkiemNotify($s, 'Bạn đã có thể từ sổ tiết kiệm #' . $s->id));
                     }
                     if($giahan == False && $s->trangthai() == Sotietkiem::STATUS[1]){
                         Notification::send($s->khachhang, new  SotietkiemNotify($s, 'Sổ tiết kiệm #' . $s->id . 'đã đến hạn'));

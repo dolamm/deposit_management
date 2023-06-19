@@ -5,18 +5,18 @@
         </div>
         <div class="col d-block">
             @can('admin-officer')
-            <button type="button" class="btn btn-primary d-block float-end" data-bs-toggle="modal" data-bs-target="#send-notify">
-                <i class="bi bi-send-plus-fill"></i> Gửi thông báo
+            <button type="button" class="btn btn-primary d-block float-end m-2" data-bs-toggle="modal" data-bs-target="#send-notify" title="Gửi thông báo cho người dùng" data-toggle="tooltip">
+                <i class="bi bi-send-plus-fill"></i>
             </button>
             @endcan
-            <!-- mark as read all -->
-            <button type="button" class="btn btn-primary d-block float-end" wire:click="readAll">
-                <i class="bi bi-check-circle-fill"></i> Đánh dấu đã đọc
-            </button>
             <!-- delete -->
-            <!-- <button type="button" class="btn btn-primary d-block float-end" wire:click="deleteAll">
-                <i class="bi bi-trash-fill"></i> Xóa tất cả
-            </button> -->
+            <button type="button" class="btn btn-danger d-block float-end m-2" wire:click="deleteAll" title="Xóa toàn bộ thông báo" data-toggle="tooltip">
+                <i class="bi bi-trash-fill"></i>
+            </button>
+            <!-- mark as read all -->
+            <button type="button" class="btn btn-success d-block float-end m-2" wire:click="readAll" title="Đánh dấu đã đọc" data-toggle="tooltip">
+                <i class="bi bi-check-circle-fill"></i>
+            </button>
         </div>
     </div>
     <table class="table h5">
@@ -27,9 +27,6 @@
                 @case("user")
                 <td>
                     <span class="badge rounded-pill bg-danger">Thông báo</span>
-                    @if($notification->read_at == null)
-                    <span class="badge rounded-pill bg-danger">Chưa đọc</span>
-                    @endif
                 </td>
                 <td>
                     {{ $notification->data['message'] }}
@@ -43,7 +40,7 @@
                     <span class="badge rounded-pill bg-success text-white">Nạp tiền</span>
                 </td>
                 <td>
-                    Đã nạp thành công số tiền {{$notification->data['data']['sotien']}} vào sổ tiết kiệm #{{$notification->data['data']['sotietkiem_id']}}
+                    Đã nạp thành công số tiền {{$notification->data['data']['sotien']}} VND vào sổ tiết kiệm #{{$notification->data['data']['sotietkiem_id']}}
                 </td>
                 @break
                 @case("withdraw")
@@ -51,7 +48,7 @@
                     <span class="badge rounded-pill bg-warning text-white">Rút tiền</span>
                 </td>
                 <td>
-                    Đã rút thành công số tiền {{$notification->data['data']['sotien']}} vào sổ tiết kiệm #{{$notification->data['data']['sotietkiem_id']}}
+                    Đã rút thành công số tiền {{$notification->data['data']['sotien']}} VND từ sổ tiết kiệm #{{$notification->data['data']['sotietkiem_id']}}
                 </td>
                 @break
                 @case("interest")
@@ -59,7 +56,7 @@
                     <span class="badge rounded-pill bg-info text-white">Nhận lãi</span>
                 </td>
                 <td>
-                    Đã nhận lãi {{$notification->data['data']['sotien']}} vào sổ tiết kiệm #{{$notification->data['data']['sotietkiem_id']}}
+                    Đã nhận lãi {{$notification->data['data']['sotien']}} VND vào sổ tiết kiệm #{{$notification->data['data']['sotietkiem_id']}}
                 </td>
                 @break
                 @endswitch
@@ -74,8 +71,11 @@
                 @break
                 @endswitch
                 <td>
-                    <button wire:click="markAsRead({{$notification->id}})" class="btn btn-sm btn-success"><i class="bi bi-check2-all"></i></button>
-                    <!-- <button wire:click="delete({{$notification->id}})" class="btn btn-sm btn-danger"><i class="bi bi-x-octagon-fill"></i></button> -->
+                    @if($notification->read_at == null)
+                    <span class="badge rounded-pill bg-danger">Thông báo mới</span>
+                    @else
+                    <span class="badge rounded-pill bg-success">Đã đọc</span>
+                    @endif
                 </td>
             </tr>
             @endforeach

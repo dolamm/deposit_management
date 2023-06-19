@@ -51,9 +51,9 @@
                                                 @if($item->makyhan == $k->makyhan)
                                                 <tr>
                                                     <th scope="row">{{$item->ngaytao}}</th>
-                                                    <td>{{$item->tongthu}}</td>
-                                                    <td>{{$item->tongchi}}</td>
-                                                    <td>{{$item->chenhlech}}</td>
+                                                    <td>{{$item->tongthu}} VND</td>
+                                                    <td>{{$item->tongchi}} VND</td>
+                                                    <td>{{$item->chenhlech}} VND</td>
                                                 </tr>
                                                 @endif
                                                 @endforeach
@@ -115,9 +115,9 @@
                                                 @foreach($data as $time => $item)  
                                                 <tr>
                                                     <th scope="row">{{$time}}</th>
-                                                    <td>{{$item['tongthu']}}</td>
-                                                    <td>{{$item['tongchi']}}</td>
-                                                    <td>{{$item['tongthu'] - $item['tongchi']}}</td>
+                                                    <td>{{$item['tongthu']}} VND</td>
+                                                    <td>{{$item['tongchi']}} VND</td>
+                                                    <td>{{$item['tongthu'] - $item['tongchi']}} VND</td>
                                                 </tr>
                                                 @endforeach
                                                 @endif

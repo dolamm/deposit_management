@@ -41,7 +41,7 @@
   </div>
 
   <div>
-    <button type="submit" class="btn btn-primary" wire:click="Add"   @if($errors->any())  disabled @endif>Tao</button>
+    <button type="submit" class="btn btn-primary" wire:click="Add" @if($errors->any()) disabled @endif>Tao</button>
   </div>
 
 </div>

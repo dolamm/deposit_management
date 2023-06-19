@@ -30,7 +30,7 @@
                     <td>
                         {{$item->khachhang->fullname}}
                     </td>
-                    <td>{{ $item->sodu }}</td>
+                    <td>{{ $item->sodu }} VND</td>
                     <td>
                         @switch($item->trangthai())
                         @case('Đã đến hạn')
@@ -70,7 +70,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content modal-lg">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Báo cáo ngày</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Lịch sử</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -106,7 +106,7 @@
                                                         {{$history->ngaygiaodich}}
                                                     </td>
                                                     <td>
-                                                        {{$history->sotien}}
+                                                        {{$history->sotien}} VND
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -114,8 +114,8 @@
                                         </table>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>

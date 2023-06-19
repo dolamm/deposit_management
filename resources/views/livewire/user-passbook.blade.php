@@ -26,7 +26,7 @@
                     <td>
                         {{$item->khachhang->fullname}}
                     </td>
-                    <td>{{ $item->sodu }}</td>
+                    <td>{{ $item->sodu }} VND</td>
                     <td>
                         @switch($item->trangthai())
                         @case('Đã đến hạn')
@@ -103,7 +103,7 @@
                                                         {{$history->ngaygiaodich}}
                                                     </td>
                                                     <td>
-                                                        {{$history->sotien}}
+                                                        {{$history->sotien}} VND
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -111,8 +111,8 @@
                                         </table>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>
