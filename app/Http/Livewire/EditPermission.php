@@ -19,7 +19,7 @@ class EditPermission extends Component
             'title' => 'Xem quyền',
             'description' => 'Xem quyền của vai trò',
             'name' => 'view-permission',
-            'permission' => ['admin'],
+            'permission' => ['admin', 'officer'],
         ],
         'edit-permission' => [
             'title' => 'Cập nhật quyền',
@@ -37,7 +37,12 @@ class EditPermission extends Component
     }
     public function render()
     {
-        return view('livewire.admin.edit-permission');
+        if(Gate::allows('view-permission')){
+            return view('livewire.admin.edit-permission');
+        }
+        else{
+            return view('errors.not_permission');
+        }
     }
 
     public function updatePermission($role_id, $permission_id)
