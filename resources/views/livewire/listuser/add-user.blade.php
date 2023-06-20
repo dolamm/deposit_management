@@ -23,13 +23,14 @@
         @error('user.password') <span class="text-danger">{{ $message }}</span> @enderror
     </div> -->
     <div class="form-group">
-        <label for="role">Role<span class="text-danger">*</span></label>
+        <label for="role">Chọn vai trò<span class="text-danger">*</span></label>
         <select class="form-select" aria-label="Default select example" wire:model="user.role_id">
+            <option selected>chọn role</option>
             @foreach($listRole as $role)
             @if(Auth::user()->role_id <= $role->id)
-                <option value="{{$role->id}}" @if($user->role_id == $role->id) selected @endif>{{$role->title}}</option>
-                @endif
-                @endforeach
+                <option value="{{$role->id}}">{{$role->title}}</option>
+            @endif
+            @endforeach
         </select>
         @error('user.role_id') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
@@ -45,10 +46,14 @@
     </div>
     <div class="form-group">
         <label for="birthday">Birthday<span class="text-danger">*</span></label>
-        <input type="datetime-local" class="form-control" id="birthday" wire:model="user.birthday">
+        <input type="date" class="form-control" id="birthday" wire:model="user.birthday">
         @error('user.birthday') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <!-- button submit -->
-    <button type="submit" class="btn btn-primary" wire:click="addUser">Submit</button>
+    <!-- any error hidden button-->
+    
+    <button type="submit" class="btn btn-primary" wire:click="addUser"
+    @if($errors->any()) disabled @endif>Tạo người dùng</button>
+
 </div>
 </div>

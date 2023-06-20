@@ -59,7 +59,7 @@ class AddUser extends Component
             $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Thêm thành công!']);
         }
         else{
-            return view('errors.not_permission');
+            $this->dispatchBrowserEvent('alert', ['type' => 'warning',  'message' => 'Bạn không có quyền thêm người dùng mới!']);
         }
     }
 }

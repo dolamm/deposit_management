@@ -7,6 +7,8 @@ use App\Models\BCDoanhSo;
 use App\Models\BcSoLuongSo;
 use App\Models\Sotietkiem;
 use App\Models\PassBookHistory;
+use App\Models\Kyhan;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -16,6 +18,8 @@ use App\Observers\BCDoanhSoObserver;
 use App\Observers\BcSLSoObserver;
 use App\Observers\SotietkiemObserver;
 use App\Observers\PassbookHSObserver;
+use App\Observers\KyhanObserver;
+use App\Observers\UserObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -62,6 +66,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         PassBookHistory::class => [
             PassbookHSObserver::class,
+        ],
+        Kyhan::class =>[
+            KyhanObserver::class,
+        ],
+        User::class =>[
+            UserObserver::class,
         ],
     ];
 }

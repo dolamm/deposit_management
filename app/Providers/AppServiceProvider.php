@@ -25,8 +25,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if(! $this->app->runningInConsole()){
-            Gate::define('check-role-admin', function ($user){
+            Gate::define('admin', function ($user){
                 return $user->role_id == User::ROLE_ADMIN;
+            });
+            Gate::define('officer', function ($user){
+                return $user->role_id == User::ROLE_OFFICER;
+            });
+            Gate::define('admin-officer', function ($user){
+                return $user->role_id == User::ROLE_ADMIN || $user->role_id == User::ROLE_OFFICER;
+            });
+            // Auth::user()->id = $id
+            Gate::define('is_auth_user', function ($user, $id){
+                return $user->id == $id;
             });
             //quyen xem man hinh & quyen thao tac
             foreach (Permission::all() as $permission) {

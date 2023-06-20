@@ -18,7 +18,7 @@
     <!-- Scripts -->
     @livewireStyles
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    
+
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
@@ -37,11 +37,11 @@
                     </a>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            <a href="/" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
@@ -52,51 +52,63 @@
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                            <a href="{{route('quanli-kyhan')}}" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Quản lí kỳ hạn</span></a>
                         </li>
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-piggy-bank-fill"></i><span class="ms-1 d-none d-sm-inline">So Tiet Kiem</span></a>
+                                <i class="fs-4 bi-piggy-bank-fill"></i><span class="ms-1 d-none d-sm-inline">Sổ Tiết Kiệm</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route('add-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Mo So Tiet Kiem</span></a>
+                                    <a href="{{route('add-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Mở Sổ Tiết Kiệm</span></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
+                                    <a href="{{route('user-passbook', Auth::user()->id)}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Sổ Tiết Kiệm Của Tôi</span></a>
+                                </li>
+                                @can('admin-officer')
+                                <li>
+                                    <a href="{{route('list-passbook')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quản Lí Sổ Tiết Kiệm</span></a>
+                                </li>
+                                @endcan
+                            </ul>
+                        </li>
+                        @can('view-report')
+                        <li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-clipboard-data-fill"></i><span class="ms-1 d-none d-sm-inline">Báo cáo</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="{{route('bcdoanhso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Báo Cáo Doanh Số</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{route('bcslso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Báo Cáo Số Lượng Sổ</span></a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-clipboard-data-fill"></i><span class="ms-1 d-none d-sm-inline">Bao Cao</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="{{route('bcdoanhso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Bao Cao Doanh So</span></a>
-                                </li>
-                                <li>
-                                    <a href="{{route('bcslso')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Bao Cao So Luong So</span></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span></a>
-                                </li>   
-                            </ul>
+                        @endcan
+                        <li class="nav-item">
+                            <a href="{{route('user-notification')}}" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-bell-fill"></i> <span class="ms-1 d-none d-sm-inline">Thông báo</span>
+                                <span class="translate-end badge rounded-pill bg-danger">
+                                    {{Auth::user()->unreadNotifications->count()}}
+                                </span>
+                            </a>
                         </li>
                         <li>
                             <a href="{{route('list-user')}}" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Thông Tin Người Dùng</span> </a>
                         </li>
                         <li>
                             <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                <i class="fs-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">System Setting</span></a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+                                <i class="fs-4 bi-gear-fill"></i> <span class="ms-1 d-none d-sm-inline">Cài Đặt Hệ Thống</span></a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route('system-config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Cai dat thong so</span></a>
+                                    <a href="{{route('system-config')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Thông Số Hệ Thống</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route('edit-permission')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quyen nguoi dung</span></a>
+                                    <a href="{{route('edit-permission')}}" class="nav-link px-0"> <span class="d-none d-sm-inline">Quyền Người Dùng</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -110,7 +122,7 @@
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                             <!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
                             <li><a class="dropdown-item" href="{{route('system-config')}}">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{route('update-profile', Auth::user()->id)}}">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

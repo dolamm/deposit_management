@@ -10,6 +10,7 @@ use Carbon\Carbon;
 class Home extends Component
 {
     public $user;
+    public $edituser;
     const route = [
         'component' => 'home',
         'route' => '/home',
@@ -17,11 +18,21 @@ class Home extends Component
     ];
     public function mount()
     {
-        $this->user = User::find(Auth::user()->id);
+        $this->user = Auth::user();
+        $this->edituser = $this->user->toArray();
     }
+
+    public function updateUser()
+    {
+        $this->user->update($this->edituser);
+        $this->dispatchBrowserEvent('alert', [
+            'type' => 'success',
+            'message' => 'Cập nhật thông tin cá nhân thành công!',
+        ]);
+    }
+
     public function render()
     {
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Welcome to Laravel 8 Livewire CRUD Tutorial']);
         return view('livewire.home');
     }
 }

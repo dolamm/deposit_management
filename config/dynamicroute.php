@@ -6,6 +6,9 @@ use App\Http\Livewire\Home;
 use App\Http\Livewire\BcDoanhSo;
 use App\Http\Livewire\AddUser;
 use App\Http\Livewire\BcSlSo;
+use App\Http\Livewire\ListPassBook;
+use App\Http\Livewire\KyhanManager;
+use App\Http\Livewire\UserNotification;
 return [
     1 => Home::route,
     2 => SysConfig::route,
@@ -14,4 +17,7 @@ return [
     5 => BcDoanhSo::route,
     6 => AddUser::route,
     7 => BcSlSo::route,
+    8 => ListPassBook::route,
+    9 => KyhanManager::route,
+    10 => UserNotification::route,
 ];

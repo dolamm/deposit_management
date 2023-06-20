@@ -1,10 +1,11 @@
 <div>
+<h2 class="mb-5">Báo cáo số lượng sổ</h2>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="sl-so-ngay-tab" data-bs-toggle="tab" data-bs-target="#sl-so-ngay" type="button" role="tab" aria-controls="sl-so-ngay" aria-selected="true">Ngay</button>
+      <button class="nav-link active" id="sl-so-ngay-tab" data-bs-toggle="tab" data-bs-target="#sl-so-ngay" type="button" role="tab" aria-controls="sl-so-ngay" aria-selected="true">Ngày</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="bcthang-tab" data-bs-toggle="tab" data-bs-target="#bcthang" type="button" role="tab" aria-controls="bcthang" aria-selected="false">Thang</button>
+      <button class="nav-link" id="bcthang-tab" data-bs-toggle="tab" data-bs-target="#bcthang" type="button" role="tab" aria-controls="bcthang" aria-selected="false">Tháng</button>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
@@ -20,7 +21,7 @@
           </div>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{$k->makyhan}}">
-            {{ $k->tenkyhan }}
+            Chi tiết {{ $k->tenkyhan }}
           </button>
         </div>
         <!--  -->
@@ -29,7 +30,7 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Báo cáo chi tiết</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -59,8 +60,8 @@
                 <!--  -->
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
               </div>
             </div>
           </div>
@@ -90,7 +91,7 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Báo Cáo Tháng</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -98,10 +99,10 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">Ngay</th>
-                      <th scope="col">So So Moi</th>
-                      <th scope="col">So So Cu</th>
-                      <th scope="col">Chenh Lech</th>
+                      <th scope="col">Ngày tạo</th>
+                      <th scope="col">Số sổ mới</th>
+                      <th scope="col">So số đóng</th>
+                      <th scope="col">Chênh lệch</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -122,8 +123,8 @@
                 <!--  -->
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
               </div>
             </div>
           </div>

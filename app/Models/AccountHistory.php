@@ -13,6 +13,7 @@ class AccountHistory extends Model
     protected $fillable = [
         'account_number',
         'type',
+        'amount',
         'old_balance',
         'new_balance',
         'description',

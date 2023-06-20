@@ -27,18 +27,21 @@
       <option value="{{$key}}">{{$value}}</option>
       @endforeach
     </select>
+    @error('data.hinhthucguitien') <span class="text-danger">{{ $message }}</span> @enderror
   </div>
   <div class="form-group">
     <label for="role">Loai ky han</label>
     <select name="kyhan" class="form-select" aria-label="Default select example" wire:model="passbook.makyhan">
       <option selected>Chọn kỳ hạn</option>
       @foreach($listkyhan as $kyhan)
-      <option value="{{$kyhan->id}}">{{$kyhan->tenkyhan}}-{{$kyhan->laisuat*100}}%</option>
+      <option value="{{$kyhan->makyhan}}">{{$kyhan->tenkyhan}}-{{$kyhan->laisuat}}%</option>
       @endforeach
     </select>
-    @error('data.id_kyhan') <span class="text-danger">{{ $message }}</span> @enderror
+    @error('passbook.makyhan') <span class="text-danger">{{ $message }}</span> @enderror
   </div>
+
   <div>
-    <button type="submit" class="btn btn-primary" wire:click="Add">Tao</button>
+    <button type="submit" class="btn btn-primary" wire:click="Add" @if($errors->any()) disabled @endif>Tao</button>
   </div>
+
 </div>

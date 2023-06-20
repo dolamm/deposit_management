@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('bc_soluongso', function (Blueprint $table) {
             $table->id();
             $table->string('makyhan');
-            $table->bigInteger('sl_somoi');
-            $table->bigInteger('sl_sodong');
+            $table->bigInteger('sl_somoi')->default(0);
+            $table->bigInteger('sl_sodong')->default(0);
             $table->bigInteger('chenhlech')->nullable();
             $table->datetime('ngaytao');
         });

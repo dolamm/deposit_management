@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('type', 255);
             $table->float('old_balance', 30, 5)->nullable();
             $table->float('new_balance', 30, 5)->nullable();
-            $table->float('amount', 30, 5);
+            $table->float('amount', 30, 5)->default(0);
             $table->string('description', 255);
             $table->timestamps();
         });

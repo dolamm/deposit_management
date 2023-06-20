@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BCDoanhSo::class);
         $this->call(BCSLSo::class);
         $this->call(GenerateSotietkiem::class);
+        $this->call(PassbookHS::class);
     }
 }

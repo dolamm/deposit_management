@@ -16,6 +16,7 @@ return [
     'cmnd_cccd' => "123465789",
     'phone' => '0916036287',
     'address' => 'bank master',
-    'birthday' => '1999-01-01',
+    'birthday' => '1999-01-01 00:00:00',
     'api_token' => Str::random(60),
+    'avatar' => 'https://static.zerochan.net/Kafuu.Chino.full.1946772.jpg'
 ];

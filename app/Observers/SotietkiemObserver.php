@@ -12,15 +12,15 @@ class SotietkiemObserver
      */
     public function created(Sotietkiem $sotietkiem): void
     {
-        $sotietkiem->thongtinkyhan = $sotietkiem->kyhan;
-        $thongtinkyhan = $sotietkiem->thongtinkyhan;
-        $sotietkiem->ngaydaohan = Carbon::parse($sotietkiem->ngaymoso)->addDays($thongtinkyhan['thoigiannhanlai']);
+        $thongtinkyhan = $sotietkiem->kyhan;
+        $sotietkiem->thongtinkyhan = $thongtinkyhan;
+        $sotietkiem->ngaydaohan = Carbon::parse($sotietkiem->ngaymoso)->addDays($thongtinkyhan->thoigiannhanlai);
         $sotietkiem->ngaycapnhat = $sotietkiem->ngaymoso;
         $sotietkiem->save();
 
         PassBookHistory::create([
             'sotietkiem_id' => $sotietkiem->id,
-            'loaihinh' => PassBookHistory::DEPOSIT,
+            'loaigd' => PassBookHistory::DEPOSIT,
             'sotien' => $sotietkiem->sotiengui,
             'ngaygiaodich' => $sotietkiem->ngaymoso,
         ]);
@@ -31,8 +31,6 @@ class SotietkiemObserver
      */
     public function updated(Sotietkiem $sotietkiem): void
     {
-        //get value before update
-        
     }
 
     /**

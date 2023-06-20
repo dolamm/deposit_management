@@ -9,8 +9,10 @@ use App\Models\sotietkiem;
 use App\Models\config;
 use App\Models\kyhan;
 use App\Models\User;
+use App\Models\AccountHistory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Validator;
-
+use Illuminate\Support\Facades\Gate;
 class AddPassBook extends Component
 {
     public Sotietkiem $passbook;
@@ -19,20 +21,27 @@ class AddPassBook extends Component
     public $data;
     public $listkyhan;
     public function mount($id){
-        $this->passbook = new Sotietkiem();
-        $this->listkyhan = Kyhan::all();
-        $this->user = User::find($id);
-        $this->data['hinhthuc'] =[
-            '1' => 'Tiền mặt',
-            '2' => 'Chuyển khoản',
-        ];
+        if(Gate::allows('is_auth_user', $id) | Gate::allows('admin-officer')){
+            $this->passbook = new Sotietkiem();
+            $this->listkyhan = Kyhan::all();
+            $this->user = User::find($id);
+            $this->data['hinhthuc'] =[
+                '1' => 'Tiền mặt',
+                '2' => 'Chuyển khoản',
+            ];
+        }
+        else{
+            return abort(403, 'Bạn không có quyền truy cập vào trang này');
+        }
     }
 
     protected $rules = [
         'passbook.sotiengui' => 'required|numeric',
         'passbook.makyhan' => 'required',
+        'data.hinhthucguitien' => 'required'
     ];
     protected $messages = [
+        'data.hinhthucguitien.required' => 'Không được để trống',
         'passbook.*.required' => 'Không được để trống',
         'passbook.*.numeric' => 'Phải là số',
     ];
@@ -56,9 +65,17 @@ class AddPassBook extends Component
         });
         $this->validate();
         $this->passbook->user_id = $this->user->id;
+        if($this->data['hinhthucguitien'] == 2){
+            AccountHistory::create([
+                'account_number' => $this->user->bankAccount->account_number,
+                'type' => AccountHistory::TYPE_WITHDRAW,
+                'amount' => $this->passbook->sotiengui,
+                'description' => 'Rút tiền gửi sổ tiết kiệm',
+            ]);
+        }
+        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Thêm thành công']);
         $this->passbook->save();
         $this->passbook= new Sotietkiem();
-        $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Thêm thành công']);
     }
 
     public function render()

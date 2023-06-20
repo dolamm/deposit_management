@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 class PassBookHistory extends Model
 {
     use HasFactory;
+
     const CREATED_AT = 'ngaygiaodich';
     const UPDATED_AT = null;
     const WITHDRAW = 'withdraw';
     const DEPOSIT = 'deposit';
     const INTEREST = 'interest';
-    protected $fillable = ['sotietkiem_id', 'sotien', 'soducu', 'sodumoi', 'loaihinh', 'ghichu'];
+    protected $fillable = ['sotietkiem_id', 'sotien', 'soducu', 'sodumoi', 'loaigd', 'ghichu'];
 
     public function sotietkiem()
     {

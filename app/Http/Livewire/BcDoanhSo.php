@@ -16,6 +16,14 @@ class BcDoanhSo extends Component
         'route' => '/bc-doanh-so',
         'name' => 'bcdoanhso',
     ];
+    const permission = [
+        'view' => [
+            'name' => 'view-report',
+            'title' => 'Xem báo cáo',
+            'description' => 'Xem các báo cáo hệ thống',
+            'permission' => ['admin', 'officer']
+        ],
+    ];
     public function mount(){
         $this->kyhan = Kyhan::all();
         $this->bcngay = BcDoanhSoModel::all()->sortByDesc('ngaytao');

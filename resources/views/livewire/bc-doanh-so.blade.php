@@ -1,10 +1,11 @@
 <div>
+<h2 class="mb-5">Báo cáo doanh số</h2>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="bcngay-tab" data-bs-toggle="tab" data-bs-target="#bcngay" type="button" role="tab" aria-controls="bcngay" aria-selected="true">Ngay</button>
+            <button class="nav-link active" id="bcngay-tab" data-bs-toggle="tab" data-bs-target="#bcngay" type="button" role="tab" aria-controls="bcngay" aria-selected="true">Ngày</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="bcthang-tab" data-bs-toggle="tab" data-bs-target="#bcthang" type="button" role="tab" aria-controls="bcthang" aria-selected="false">Thang</button>
+            <button class="nav-link" id="bcthang-tab" data-bs-toggle="tab" data-bs-target="#bcthang" type="button" role="tab" aria-controls="bcthang" aria-selected="false">Tháng</button>
         </li>
     </ul>
     <div class="container">
@@ -24,7 +25,7 @@
                             </div>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{$k->makyhan}}-thang">
-                                {{ $k->tenkyhan }}
+                                Chi tiết {{ $k->tenkyhan }}
                             </button>
                         </div>
                         <!-- Modal -->
@@ -32,17 +33,17 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="{{$k->makyhan}}-thang">Bao cao{{ $k->tenkyhan }}</h5>
+                                        <h5 class="modal-title" id="{{$k->makyhan}}-thang">Báo cáo {{ $k->tenkyhan }}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Ngay Tao</th>
-                                                    <th scope="col">Tong Thu</th>
-                                                    <th scope="col">Tong Chi</th>
-                                                    <th scope="col">Chenh Lech</th>
+                                                    <th scope="col">Ngày tạo</th>
+                                                    <th scope="col">Tổng thu</th>
+                                                    <th scope="col">Tổng chi</th>
+                                                    <th scope="col">Chênh lệch</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -50,9 +51,9 @@
                                                 @if($item->makyhan == $k->makyhan)
                                                 <tr>
                                                     <th scope="row">{{$item->ngaytao}}</th>
-                                                    <td>{{$item->tongthu}}</td>
-                                                    <td>{{$item->tongchi}}</td>
-                                                    <td>{{$item->chenhlech}}</td>
+                                                    <td>{{$item->tongthu}} VND</td>
+                                                    <td>{{$item->tongchi}} VND</td>
+                                                    <td>{{$item->chenhlech}} VND</td>
                                                 </tr>
                                                 @endif
                                                 @endforeach
@@ -94,17 +95,17 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="{{$k->makyhan}}Label">Bao cao{{ $k->tenkyhan }}</h5>
+                                        <h5 class="modal-title" id="{{$k->makyhan}}Label">Báo cáo {{ $k->tenkyhan }}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Ngay Tao</th>
-                                                    <th scope="col">Tong Thu</th>
-                                                    <th scope="col">Tong Chi</th>
-                                                    <th scope="col">Chenh Lech</th>
+                                                    <th scope="col">Ngày tạo</th>
+                                                    <th scope="col">Tổng thu</th>
+                                                    <th scope="col">Tổng chi</th>
+                                                    <th scope="col">Chênh lệch</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -114,9 +115,9 @@
                                                 @foreach($data as $time => $item)  
                                                 <tr>
                                                     <th scope="row">{{$time}}</th>
-                                                    <td>{{$item['tongthu']}}</td>
-                                                    <td>{{$item['tongchi']}}</td>
-                                                    <td>{{$item['tongthu'] - $item['tongchi']}}</td>
+                                                    <td>{{$item['tongthu']}} VND</td>
+                                                    <td>{{$item['tongchi']}} VND</td>
+                                                    <td>{{$item['tongthu'] - $item['tongchi']}} VND</td>
                                                 </tr>
                                                 @endforeach
                                                 @endif
