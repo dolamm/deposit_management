@@ -37,6 +37,10 @@ class PassbookWithdraw extends Component
         'data.hinhthucruttien.required' => 'Hình thức rút tiền không được để trống',
     ];
 
+    public function updated($propertyName){
+        $this->validateOnly($propertyName);
+    }
+
     public function withdraw(){
         $money = $this->data['withdraw-money'];
         $this->withValidator(function (Validator $validator) use ($money){

@@ -29,11 +29,11 @@ class AddUser extends Component
     }
     protected $rules = [
         'user.fullname' => 'required',
-        'user.phone' => 'required|unique:users,phone',
+        'user.phone' => 'required:numberic|unique:users,phone',
         'user.email' => 'required|email|unique:users,email',
         'user.role_id' => 'required',
         'user.address' => 'required',
-        'user.cmnd_cccd' => 'required|unique:users,cmnd_cccd',
+        'user.cmnd_cccd' => 'required|numberic|unique:users,cmnd_cccd',
         'user.birthday' => 'required',
 
     ];
@@ -43,6 +43,8 @@ class AddUser extends Component
         'user.email.unique' => 'Email đã tồn tại',
         'user.cmnd_cccd.unique' => 'Số CMND/CCCD đã tồn tại',
         'user.email.email' => 'Email không đúng định dạng',
+        'user.phone.numberic' => 'Số điện thoại phải là số',
+        'user.cmnd_cccd.numberic' => 'Số CMND/CCCD phai là số',
     ];
 
     public function render()

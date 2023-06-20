@@ -2,7 +2,7 @@
     <!-- from input user data -->
     <!-- fullname -->
     <div class="form-group">
-        <label for="fullname">Fullname</label>
+        <label for="fullname">Họ và Tên</label>
         <input type="text" class="form-control" id="fullname" wire:model="user.fullname">
         @error('user.fullname') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
@@ -35,17 +35,17 @@
         @error('user.role_id') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <div class="form-group">
-        <label for="phone">Phone</label>
+        <label for="phone">Số điện thoại</label>
         <input type="text" class="form-control" id="phone" wire:model="user.phone">
         @error('user.phone') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <div class="form-group">
-        <label for="address">Address</label>
+        <label for="address">Địa chỉ</label>
         <input type="text" class="form-control" id="address" wire:model="user.address">
         @error('user.address') <span class="text-danger">{{ $message }}</span> @enderror
     </div>
     <div class="form-group">
-        <label for="birthday">Birthday</label>
+        <label for="birthday">Ngày Sinh</label>
         <input type="date" class="form-control" id="birthday" wire:model="user.birthday">
         @error('user.birthday') <span class="text-danger">{{ $message }}</span> @enderror
     </div>

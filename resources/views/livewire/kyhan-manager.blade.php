@@ -40,8 +40,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="close_modal">Đóng</button>
-                        <button type="button" class="btn btn-primary" wire:click="add_kyhan">Lưu kỳ hạn</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" @if($errors->any()) disabled @enderror class="btn btn-primary" wire:click="add_kyhan" data-bs-dismiss="modal">Lưu kỳ hạn</button>
                     </div>
                 </div>
             </div>

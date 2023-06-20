@@ -108,7 +108,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" wire:click="NotifiUser" data-bs-dismiss="modal">Gửi thông báo</button>
+                    <button type="button"@if($errors->any()) disabled @enderror class="btn btn-primary" wire:click="NotifiUser" data-bs-dismiss="modal">Gửi thông báo</button>
                 </div>
             </div>
         </div>
