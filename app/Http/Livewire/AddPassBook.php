@@ -29,6 +29,7 @@ class AddPassBook extends Component
                 '1' => 'Tiền mặt',
                 '2' => 'Chuyển khoản',
             ];
+            $this->data['hinhthucguitien'] = '1';
         }
         else{
             return abort(403, 'Bạn không có quyền truy cập vào trang này');
