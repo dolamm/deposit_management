@@ -1,7 +1,7 @@
 <div>
   <!-- user info -->
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Tên khách hàng</label>
+    <label for="exampleInputEmail1" class="form-label">Tên khách hàng<span class="text-danger">*</span></label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$user->fullname}}" disabled>
   </div>
   <div class="mb-3">
@@ -14,7 +14,7 @@
   </div>
   <!-- end user info -->
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Số tiền gửi</label>
+    <label for="exampleInputEmail1" class="form-label">Số tiền gửi<span class="text-danger">*</span></label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" wire:model="passbook.sotiengui">
     @error('passbook.sotiengui') <span class="text-danger">{{ $message }}</span> @enderror
   </div>
