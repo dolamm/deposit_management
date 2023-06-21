@@ -16,10 +16,16 @@ class PassBookHistoryFactory extends Factory
      */
     public function definition(): array
     {
+        $type = $this->faker->randomElement(['deposit', 'withdraw', 'interest']);
+        $money = $this->faker->randomFloat(/** @scrutinizer ignore-type */ 0, 0, 99999999.);
+        if ($type == 'withdraw')
+        {
+            $money = $this->faker->randomFloat(/** @scrutinizer ignore-type */ 0, 0, 99999.);
+        }
         return [
             'sotietkiem_id' => random_int(1, 100),
-            'loaigd' => $this->faker->randomElement(['deposit', 'withdraw', 'interest']),
-            'sotien' => $this->faker->randomFloat(/** @scrutinizer ignore-type */ 0, 0, 9999999.),
+            'loaigd' => $type,
+            'sotien' => $money,
             'ghichu' => $this->faker->text(),
             'ngaygiaodich' => $this->faker->dateTimeBetween('-3 days', 'now'),
         ];
