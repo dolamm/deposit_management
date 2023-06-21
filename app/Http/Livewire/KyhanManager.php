@@ -39,9 +39,16 @@ class KyhanManager extends Component
     }
 
     protected $rules = [
-        'val.*' => [
+        'val.*.laisuat' => [
             'required',
             'numeric',
+            'min:1',
+            'max:100',
+        ],
+        'val.*.thoigiannhanlai' => [
+            'required',
+            'numeric',
+            'min:1',
         ],
         'new_kyhan.makyhan' => 'required|unique:kyhan,makyhan',
         'new_kyhan.tenkyhan' => 'required',
@@ -50,14 +57,17 @@ class KyhanManager extends Component
     ];
 
     protected $messages = [
-        'val.*.required' => 'Giá trị không được để trống',
-        'val.*.numeric' => 'Giá trị phải là số',
+        'val.*.*.required' => 'Giá trị không được để trống',
+        'val.*.*.numeric' => 'Giá trị phải là số',
+        'val.*.*.min' => 'Giá trị không được nhỏ hơn 1',
+        'val.*.laisuat.max' => 'Giá trị không được lớn hơn 100',
         'new_kyhan.*.required' => 'Giá trị không được để trống',
         'new_kyhan.makyhan.unique' => 'Mã kỳ hạn đã tồn tại',
+        'new_kyhan.laisuat.numeric' => 'Giá trị phải là số',
         'new_kyhan.laisuat.min' => 'Giá trị phải lớn hơn 0',
         'new_kyhan.laisuat.max' => 'Giá trị không được lớn hơn 100',
-        'new_kyhan.laisuat.numeric' => 'Giá trị phải là số',
-        'new_kyhan.thoigiannhanlai.numeric' => 'Giá trị phải là số'
+        'new_kyhan.thoigiannhanlai.numeric' => 'Giá trị phải là số',
+        'new_kyhan.thoigiannhanlai.min' => 'Giá trị phải lớn hơn 0'
     ];
 
     public function updated($propertyName)
@@ -68,8 +78,8 @@ class KyhanManager extends Component
     public function edit_kyhan($key){
         if(Gate::allows('kyhan-update')){
             $kyhan = kyhan::find($key);
-            $kyhan->laisuat = $this->val['laisuat'];
-            $kyhan->thoigiannhanlai = $this->val['thoigiannhanlai'];
+            $kyhan->laisuat = $this->val[$key]['laisuat'];
+            $kyhan->thoigiannhanlai = $this->val[$key]['thoigiannhanlai'];
             $kyhan->save();
             $this->dispatchBrowserEvent(
                 'alert',
