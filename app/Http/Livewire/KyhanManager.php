@@ -81,6 +81,7 @@ class KyhanManager extends Component
             $kyhan->laisuat = $this->val[$key]['laisuat'];
             $kyhan->thoigiannhanlai = $this->val[$key]['thoigiannhanlai'];
             $kyhan->save();
+            $this->mount();
             $this->dispatchBrowserEvent(
                 'alert',
                 ['type' => 'success',  'message' => "Bạn đã thay đổi thông tin kỳ hạn thành công"]
@@ -107,6 +108,7 @@ class KyhanManager extends Component
             $this->new_kyhan->save();
             $this->new_kyhan = new kyhan();
             $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Thêm thành công!']);
+            $this->mount();
         }
         else{
             $this->dispatchBrowserEvent(
