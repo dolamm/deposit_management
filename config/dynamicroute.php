@@ -9,6 +9,7 @@ use App\Http\Livewire\BcSlSo;
 use App\Http\Livewire\ListPassBook;
 use App\Http\Livewire\KyhanManager;
 use App\Http\Livewire\UserNotification;
+use App\Http\Livewire\ChatRoom;
 return [
     1 => Home::route,
     2 => SysConfig::route,
@@ -20,4 +21,5 @@ return [
     8 => ListPassBook::route,
     9 => KyhanManager::route,
     10 => UserNotification::route,
+    11 => ChatRoom::route,
 ];

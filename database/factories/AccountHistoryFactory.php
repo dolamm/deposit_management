@@ -23,7 +23,7 @@ class AccountHistoryFactory extends Factory
             $amount = $this->faker->randomFloat(/** @scrutinizer ignore-type */ 0, 0, 999999.);
         }
         return [
-            'type' => random_int(0, 1) ? 'deposit' : 'withdraw',
+            'type' => $type,
             'amount' => $amount,
             'description' => random_int(0,1) ? "Nộp tiền" : "Rút tiền",
         ];

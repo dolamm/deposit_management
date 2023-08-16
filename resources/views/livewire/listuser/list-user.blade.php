@@ -1,4 +1,6 @@
 <div>
+  <!-- css -->
+  @vite('resources/css/app.css')
   <div class="container">
     <div class="row">
       <div class="col">

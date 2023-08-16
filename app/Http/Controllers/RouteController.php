@@ -12,7 +12,7 @@ class RouteController extends Controller
     }
     public static function index($component)
     {
-        return view('admin.config', [
+        return view('admin.master', [
             'routeName' => $component
         ]);
     }

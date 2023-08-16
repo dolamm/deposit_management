@@ -24,7 +24,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- css -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body>
@@ -99,6 +98,10 @@
                         <li>
                             <a href="{{route('list-user')}}" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Thông Tin Người Dùng</span> </a>
+                        </li>
+                        <li>
+                            <a href="{{route('chat-room')}}" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-chat-left-dots"></i> <span class="ms-1 d-none d-sm-inline">Tán Gẫu</span></a>
                         </li>
                         <li>
                             <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
