@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('bc_doanhso', function (Blueprint $table) {
             $table->id();
             $table->string('makyhan');
-            $table->float('tongchi',25,3);
-            $table->float('tongthu',25,3);
-            $table->float('chenhlech',25,3);
-            $table->timestamps();
+            $table->float('tongchi',25,3)->default(0);
+            $table->float('tongthu',25,3)->default(0);
+            $table->float('chenhlech',25,3)->nullable();
+            $table->datetime('ngaytao');
         });
     }
 

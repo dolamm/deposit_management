@@ -1,6 +1,6 @@
     <div class="content">
         <div class="container">
-            <h2 class="mb-5">Edit Permission</h2>
+            <h2 class="mb-5">Chỉnh sửa quyền</h2>
             <div class="table-responsive">
                 <table class="table custom-table">
                     <thead>

@@ -19,7 +19,7 @@ class AdminUser extends Seeder
                 'email' => config('administrator.email'),
                 'password' => bcrypt(config('administrator.password')),
                 'role_id' => config('administrator.role'),
-                'CMND/CCCD' => config('administrator.CMND/CCCD'),
+                'cmnd_cccd' => config('administrator.cmnd_cccd'),
                 'phone' => config('administrator.phone'),
             ]);
         }

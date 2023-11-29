@@ -9,6 +9,7 @@ use Auth;
 use App\Models\User;
 use App\Http\Livewire\Notification;
 use Illuminate\Validation\Validator;
+
 class SysConfig extends Component
 {
     const route = [
@@ -32,7 +33,6 @@ class SysConfig extends Component
     ];
     public $config;
     public $value;
-
     public function render()
     {
         if (Gate::allows('sys-config')) {

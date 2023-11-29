@@ -3,11 +3,24 @@
 namespace App\Providers;
 
 use App\Models\AccountHistory;
+use App\Models\BCDoanhSo;
+use App\Models\BcSoLuongSo;
+use App\Models\Sotietkiem;
+use App\Models\PassBookHistory;
+use App\Models\Kyhan;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use App\Observers\AccountObserver;
+use App\Observers\BCDoanhSoObserver;
+use App\Observers\BcSLSoObserver;
+use App\Observers\SotietkiemObserver;
+use App\Observers\PassbookHSObserver;
+use App\Observers\KyhanObserver;
+use App\Observers\UserObserver;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -41,6 +54,24 @@ class EventServiceProvider extends ServiceProvider
     protected $observers = [
         AccountHistory::class => [
             AccountObserver::class,
+        ],
+        BCDoanhSo::class => [
+            BCDoanhSoObserver::class,
+        ],
+        BcSoLuongSo::class => [
+            BcSLSoObserver::class,
+        ],
+        Sotietkiem::class => [
+            SotietkiemObserver::class,
+        ],
+        PassBookHistory::class => [
+            PassbookHSObserver::class,
+        ],
+        Kyhan::class =>[
+            KyhanObserver::class,
+        ],
+        User::class =>[
+            UserObserver::class,
         ],
     ];
 }

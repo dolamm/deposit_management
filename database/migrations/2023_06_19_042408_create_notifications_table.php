@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ls_guitien', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('sotietkiem_id')->unsigned();
-            $table->float('soducu',20,3);
-            $table->float('sotien',20,3);
-            $table->float('sodumoi',20,3);
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('type');
+            $table->morphs('notifiable');
+            $table->text('data');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('ls_guitien');
+        Schema::dropIfExists('notifications');
     }
 };

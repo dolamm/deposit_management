@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('sotietkiem', function (Blueprint $table) {
             $table->id();
-            $table->json('loaikyhan');
+            $table->string('makyhan');
+            $table->json('thongtinkyhan')->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             // $table->timestamps();
             $table->datetime('ngaymoso');
-            $table->datetime('ngaydaohan');
-            $table->float('sotiengui');
-            $table->float('sodu');
-            $table->float('tienlai')->default(0);
+            $table->datetime('ngaydaohan')->nullable();
+            $table->datetime('ngaycapnhat')->nullable();
+            $table->float('sotiengui', 30, 5);
+            $table->float('sodu', 30, 5)->default(0);
+            $table->float('tienlai',30, 5)->default(0);
             $table->datetime('ngaydongso')->nullable()->default(null);
         });
     }

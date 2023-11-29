@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ls_tienlai', function (Blueprint $table) {
+        $messageLength = config('chatroom.message-length');
+        Schema::create('chat_rooms', function (Blueprint $table) use ($messageLength) {
             $table->id();
-            $table->bigInteger('sotietkiem_id')->unsigned();
-            $table->float('soducu', 20, 3);
-            $table->float('tienlai', 20, 3);
-            $table->float('sodumoi', 20, 3);
+            $table->bigInteger('user_id');
+            $table->text('message', $messageLength);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ls_tienlai');
+        Schema::dropIfExists('chat_rooms');
     }
 };
