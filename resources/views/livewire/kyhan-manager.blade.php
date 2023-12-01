@@ -33,10 +33,21 @@
                             <input wire:model="new_kyhan.laisuat" type="text" class="form-control" id="laisuat" placeholder="Nhập lãi suất">
                             @error('new_kyhan.laisuat') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="thoigiannhanlai">Thời gian nhận lãi (ngày)<span class="text-danger">*</span></label>
                             <input wire:model="new_kyhan.thoigiannhanlai" type="text" class="form-control" id="thoigiannhanlai" placeholder="Nhập thời gian nhận lãi">
                             @error('new_kyhan.thoigiannhanlai') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div> -->
+                        <div class="form-group">
+                        <label for="thoigiannhanlai">Thời gian nhận lãi (ngày)<span class="text-danger">*</span></label>
+                        <select class="form-select" id="thoigiannhanlai"
+                            wire:model="new_kyhan.thoigiannhanlai"
+                        >
+                            <option disabled selected>Chọn thời gian nhận lãi</option>
+                            @foreach($periodList as $period)
+                            <option value="{{$period['value']}}">{{$period['name']}}</option>
+                            @endforeach
+                        </select>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -69,11 +80,11 @@
                                     <input wire:model="val.{{ $kyhan->id }}.laisuat" type="text" class="form-control" id="laisuat" placeholder="Nhập lãi suất">
                                     @error('val.'.$kyhan->id.'.laisuat') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="thoigiannhanlai">Thời gian nhận lãi (tháng)</label>
                                     <input wire:model="val.{{ $kyhan->id }}.thoigiannhanlai" type="text" class="form-control" id="thoigiannhanlai" placeholder="Nhập thời gian nhận lãi">
                                     @error('val.'.$kyhan->id. '.thoigiannhanlai') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
+                                </div> -->
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="close_modal">Đóng</button>

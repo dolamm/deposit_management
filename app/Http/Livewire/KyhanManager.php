@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\Gate;
 use App\Models\kyhan;
+use Faker\Guesser\Name;
+use Illuminate\Database\Eloquent\Collection;
 
 class KyhanManager extends Component
 {
@@ -27,15 +29,49 @@ class KyhanManager extends Component
         'component' => 'kyhan-manager',
         'route' => '/kyhan-manager'
     ];
+    const Period = [
+        1,2, 7, 14, 30, 90, 180, 270, 365
+    ];
+    public function convertPeriod($period){
+        $name = "";
+        $temp = $period;
+        switch($temp){
+            case 1:
+                $name = "không kỳ hạn";
+                break;
+            case $temp > 1 && $temp < 7:
+                $name = $temp .' ' ."ngày"; 
+                break;
+            case $temp >= 7 && $temp < 30:
+                $temp = $temp / 7;
+                $name = $temp .' ' ."tuần";
+                break;
+            case $temp >= 30 && $temp < 365:
+                $temp = $temp / 30;
+                $name =$temp .' ' ."tháng";
+                break;
+            case $temp >= 365:
+                $temp = $temp / 365;
+                $name =$temp .' ' ."năm";
+                break;
+        };
+        return [
+            'value' => $period,
+            'name' => $name
+        ];
+    }
     public $kyhan_all;
     public kyhan $new_kyhan;
     public $val;
     public $laisuat;
     public $thoigiannhanlai;
+    public $periodList;
 
     public function mount(){
         $this->kyhan_all = kyhan::all();
         $this->new_kyhan = new kyhan();
+        $this->periodList = array_map(array($this, 'convertPeriod'), self::Period);
+
     }
 
     protected $rules = [
@@ -45,15 +81,10 @@ class KyhanManager extends Component
             'min:1',
             'max:100',
         ],
-        'val.*.thoigiannhanlai' => [
-            'required',
-            'numeric',
-            'min:1',
-        ],
         'new_kyhan.makyhan' => 'required|unique:kyhan,makyhan',
         'new_kyhan.tenkyhan' => 'required',
-        'new_kyhan.laisuat' => 'required|numeric|min:1|max:100',
-        'new_kyhan.thoigiannhanlai' => 'required|numeric|min:1',
+        'new_kyhan.laisuat' => 'required|numeric|min:1.00|max:100.00',
+        'new_kyhan.thoigiannhanlai' => 'required',
     ];
 
     protected $messages = [
@@ -66,13 +97,12 @@ class KyhanManager extends Component
         'new_kyhan.laisuat.numeric' => 'Giá trị phải là số',
         'new_kyhan.laisuat.min' => 'Giá trị phải lớn hơn 0',
         'new_kyhan.laisuat.max' => 'Giá trị không được lớn hơn 100',
-        'new_kyhan.thoigiannhanlai.numeric' => 'Giá trị phải là số',
-        'new_kyhan.thoigiannhanlai.min' => 'Giá trị phải lớn hơn 0'
     ];
 
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
+        
     }
 
     public function edit_kyhan($key){
@@ -105,6 +135,7 @@ class KyhanManager extends Component
     public function add_kyhan(){
         if(Gate::allows('kyhan-update')){
             $this->validate();
+            $this->new_kyhan->tenkyhan = $this->new_kyhan->tenkyhan . ' - ' . $this->convertPeriod($this->new_kyhan->thoigiannhanlai)['name'];
             $this->new_kyhan->save();
             $this->new_kyhan = new kyhan();
             $this->dispatchBrowserEvent('alert', ['type' => 'success',  'message' => 'Thêm thành công!']);
@@ -130,7 +161,6 @@ class KyhanManager extends Component
             );
         }
     }
-
     public function render()
     {
             return view('livewire.kyhan-manager');
