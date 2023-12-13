@@ -1,5 +1,5 @@
 <div>
-<h2 class="mb-5">Báo cáo doanh số</h2>
+    <h2 class="mb-5">Báo cáo doanh số</h2>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="bcngay-tab" data-bs-toggle="tab" data-bs-target="#bcngay" type="button" role="tab" aria-controls="bcngay" aria-selected="true">Ngày</button>
@@ -51,9 +51,9 @@
                                                 @if($item->makyhan == $k->makyhan)
                                                 <tr>
                                                     <th scope="row">{{$item->ngaytao}}</th>
-                                                    <td>{{$item->tongthu}} VND</td>
-                                                    <td>{{$item->tongchi}} VND</td>
-                                                    <td>{{$item->chenhlech}} VND</td>
+                                                    <td>{{number_format($item->tongthu, 0, '.', ',')}} VND</td>
+                                                    <td>{{number_format($item->tongchi, 0, '.', ',')}} VND</td>
+                                                    <td>{{number_format($item->chenhlech, 0, '.', ',')}} VND</td>
                                                 </tr>
                                                 @endif
                                                 @endforeach
@@ -112,12 +112,12 @@
 
                                                 @foreach($bcthang as $label => $data)
                                                 @if($label == $k->makyhan)
-                                                @foreach($data as $time => $item)  
+                                                @foreach($data as $time => $item)
                                                 <tr>
                                                     <th scope="row">{{$time}}</th>
-                                                    <td>{{$item['tongthu']}} VND</td>
-                                                    <td>{{$item['tongchi']}} VND</td>
-                                                    <td>{{$item['tongthu'] - $item['tongchi']}} VND</td>
+                                                    <td>{{number_format($item['tongthu'],0 , ',' ,'.')}} VND</td>
+                                                    <td>{{number_format($item['tongchi'],0 , ',' ,'.')}} VND</td>
+                                                    <td>{{number_format($item['tongthu'] - $item['tongchi'],0 , ',' ,'.')}} VND</td>
                                                 </tr>
                                                 @endforeach
                                                 @endif
