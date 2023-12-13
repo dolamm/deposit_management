@@ -45,9 +45,12 @@ class CalculateInterest extends Command
                 $giahan = $thongtinkyhan['giahan'];
                 $strtoend = $ngayhientai->diffInDays($ngaymoso);
                 $check = $ngayhientai->diffInDays($ngaymoso) % $thoigiannhanlai;
-
-                if($check == 0){
-                    $sotienlai = $s->sodu * $thongtinkyhan['laisuat']/100 * $thongtinkyhan['thoigiannhanlai'] / 365;
+                // // dung trong truong hop bi qua ngay dao han de tinh lai 0 ky han cho cac loai so
+                // $ngaydaohan = $s->ngaydaohan;
+                // $khongkyhan = Kyhan::find(1)->first();
+                // $check = $ngayhientai->diffInDays($ngaydaohan) % $khongkyhan->ngaytinhlai;
+                if($check >= 0){
+                    $sotienlai = $s->sodu * $thongtinkyhan['laisuat'] /100  * $thongtinkyhan['thoigiannhanlai'] / 365;
                     PassBookHistory::create([
                         'sotietkiem_id' => $s->id,
                         'loaigd' => PassBookHistory::INTEREST,

@@ -30,7 +30,9 @@
                     <td>
                         {{$item->khachhang->fullname}}
                     </td>
-                    <td>{{ $item->sodu }} VND</td>
+                    <td>{{ 
+                        number_format($item->sodu, 3, '.', ',')    
+                    }} VND</td>
                     <td>
                         @switch($item->trangthai())
                         @case('Đã đến hạn')
@@ -106,7 +108,9 @@
                                                         {{$history->ngaygiaodich}}
                                                     </td>
                                                     <td>
-                                                        {{$history->sotien}} VND
+                                                        {{
+                                                            number_format($history->sotien, 3, '.', ',')
+                                                        }} VND
                                                     </td>
                                                 </tr>
                                                 @endforeach
