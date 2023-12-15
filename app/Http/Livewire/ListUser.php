@@ -41,7 +41,7 @@ class ListUser extends Component
     public function mount()
     {
         $this->listRole = Role::all();
-        $this->listUser = User::where('role_id', 3)->get();
+        $this->listUser = User::withTrashed()->where('role_id', 3)->get();
         $this->currentRole = 3;
     }
 
@@ -53,7 +53,7 @@ class ListUser extends Component
     public function changeRole($role_id)
     {
         $this->currentRole = $role_id;
-        $this->listUser = User::where('role_id', $role_id)->get();
+        $this->listUser = User::withTrashed()->where('role_id', $role_id)->get();
     }
 
     public function updateUserRole($user_id, $role_id)
@@ -73,11 +73,25 @@ class ListUser extends Component
     {
         if (Gate::allows('delete-user')) {
             $user = User::find($user_id);
+            // soft delete
             $user->delete();
-            $this->listUser = User::where('role_id', $this->currentRole)->get();
-            $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Xóa thành công!']);
+            $this->listUser = User::withTrashed()->where('role_id', $this->currentRole)->get();
+            $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Xóa người dùng #'. $user->fullname . ' thành công!']);
         } else {
             $this->dispatchBrowserEvent('alert', ['type' => 'warning', 'message' => 'Bạn không có quyền xóa!']);
+        }
+    }
+
+    public function restoreUser($user_id)
+    {
+        if (Gate::allows('delete-user')) {
+            $user = User::withTrashed()->find($user_id);
+            // restore
+            $user->restore();
+            $this->listUser = User::withTrashed()->where('role_id', $this->currentRole)->get();
+            $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Khôi phục người dùng '. $user->fullname . ' thành công!']);
+        } else {
+            $this->dispatchBrowserEvent('alert', ['type' => 'warning', 'message' => 'Bạn không có quyền khôi phục!']);
         }
     }
 }

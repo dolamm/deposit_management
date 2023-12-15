@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Sotietkiem;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Casts\EncryptInfo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -19,6 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use SoftDeletes;
     const ROLE_ADMIN = 1;
     const ROLE_OFFICER = 2;
     const ROLE_USER = 3;

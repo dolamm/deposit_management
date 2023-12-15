@@ -64,14 +64,26 @@
                           @endforeach
                       </select>
                     </td>
-                    <td><span class="status text-success">&bull;</span>Active</td>
                     <td>
+                      @if($user->deleted_at == null)
+                      <span class="badge bg-success">Active</span>
+                      @else
+                      <span class="badge bg-danger">Deleted</span>
+                      @endif
+                    </td>
+                    <td>
+                    @if($user->deleted_at == null)
                       <a type="button" href="{{route('update-profile', $user->id)}}" class="btn btn-outline-primary" title="chỉnh sửa thông tin cá nhân" data-toggle="tooltip">
                         <i class="bi bi-pencil-square"></i>
                       </a>
                       <button href="#" class="btn btn-outline-danger" title="Delete" data-toggle="tooltip" wire:click="deleteUser({{$user->id}})">
                         <i class="bi bi-x-octagon-fill"></i>
                       </button>
+                      @else
+                      <button href="#" class="btn btn-outline-success" title="Restore" data-toggle="tooltip" wire:click="restoreUser({{$user->id}})">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                      </button>
+                      @endif
                     </td>
                   </tr>
                   @endif

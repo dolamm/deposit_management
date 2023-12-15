@@ -30,6 +30,7 @@ return new class extends Migration
                 ->default(null);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
