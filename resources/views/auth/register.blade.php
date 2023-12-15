@@ -101,6 +101,17 @@
                     </label>
                   </div>
 
+                  <div class="d-flex justify-content-center mb-2">
+                    <div class="g-recaptcha" id="feedback-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}" data-callback="onSubmit" data-action="submit"></div>
+                    <div>
+                    @if($errors->has('g-recaptcha-response'))
+                    <span class="invalid-feedback" style="display:block">
+                      <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                    </span>
+                    @endif
+                    </div>
+                  </div>
+                
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button type="submit" class="btn btn-primary btn-lg">Đăng ký</button>
                   </div>

@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use App\Rules\ValidRecaptcha;
 class RegisterController extends Controller
 {
     /*
@@ -56,6 +57,7 @@ class RegisterController extends Controller
             'cmnd_cccd' => ['required', 'string', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'max:255', 'unique:users'],
             'address' => ['string', 'max:255'],
+            'g-recaptcha-response' => ['required', new ValidRecaptcha],
         ]);
     }
 

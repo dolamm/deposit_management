@@ -40,13 +40,25 @@
                     </div>
                   </div>
 
-                  <div class="form-check d-flex justify-content-center mb-5">
+                  <div class="form-check d-flex justify-content-center mb-2">
                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                     <label class="form-check-label" for="remember">
                       Ghi nhớ mật khẩu
                     </label>
                   </div>
-
+                  <!-- re captcha -->
+                  <!-- data siteke  = env -->.
+                  <div class="d-flex justify-content-center mb-2">
+                    <div class="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}" data-callback="onSubmit" data-action="submit"></div>
+                    <div>
+                    @if($errors->has('g-recaptcha-response'))
+                    <span class="invalid-feedback" style="display:block">
+                      <strong>{{$errors->first('g-recaptcha-response')}}</strong>
+                    </span>
+                    @endif
+                    </div>
+                  </div>
+                  <!-- end re captcha -->
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button type="submit" class="btn btn-primary btn-lg">Đăng nhập</button>
                   </div>
@@ -57,6 +69,7 @@
                     </a>
                     @endif
                   </div>
+                  
 
                 </form>
 
