@@ -14,9 +14,9 @@ class Kyhan extends Model
     const UPDATED_AT = 'ngaycapnhat';
 
     protected $fillable = ['makyhan', 'tenkyhan', 'thoigiannhanlai', 'laisuat'];
-    protected $casts = [
-        'laisuat' => Percent::class,
-    ];
+    // protected $casts = [
+    //     'laisuat' => Percent::class,
+    // ];
 
     const dskyhan = [
         1 => [

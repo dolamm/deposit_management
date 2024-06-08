@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="laisuat">Lãi suất kỳ hạn (%)<span class="text-danger">*</span></label>
-                            <input wire:model="new_kyhan.laisuat" type="text" class="form-control" id="laisuat" placeholder="Nhập lãi suất">
+                            <input wire:model="new_kyhan.laisuat" type="number" class="form-control" id="laisuat" placeholder="Nhập lãi suất">
                             @error('new_kyhan.laisuat') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <!-- <div class="form-group">

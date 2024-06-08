@@ -9,6 +9,7 @@ use App\Models\Kyhan;
 use App\Models\AccountHistory;
 use App\Models\Config;
 use Illuminate\Validation\Validator;
+use Carbon\Carbon;
 class PassbookDeposit extends Component
 {
     public  Sotietkiem $sotietkiem;
@@ -49,7 +50,9 @@ class PassbookDeposit extends Component
                 }
             });
         });
+
         $this->validate();
+
         if($this->sotietkiem->thongtinkyhan['giahan'] == 1){
             PassBookHistory::create([
                 'sotietkiem_id' => $this->sotietkiem->id,
@@ -59,12 +62,14 @@ class PassbookDeposit extends Component
         }
         else {
             $sotien_them = $this->data['deposit-money'];
+            $soid = $this->sotietkiem->id;
             PassBookHistory::create([
-                'sotietkiem_id' => $this->sotietkiem->id,
+                'sotietkiem_id' => $soid,
                 'sotien' => $this->sotietkiem->sodu,
                 'loaigd' => PassBookHistory::WITHDRAW,
-                'ghichu' => 'Làm mới sổ tiết kiệm'
+                'ghichu' => 'Làm mới sổ tiết kiệm',
             ]);
+
             $new_id = Sotietkiem::create([
                 'user_id' => $this->sotietkiem->user_id,
                 'makyhan' => $this->sotietkiem->makyhan,
@@ -73,7 +78,7 @@ class PassbookDeposit extends Component
             ]);
 
             PassBookHistory::create([
-                'sotietkiem_id' => $new_id,
+                'sotietkiem_id' => $new_id->id,
                 'sotien' => $sotien_them,
                 'loaigd' => PassBookHistory::DEPOSIT,
                 'ghichu' => 'Thêm số tiền vào sổ tiết kiệm'

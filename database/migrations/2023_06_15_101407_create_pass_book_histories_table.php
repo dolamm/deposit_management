@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float('sotien', 30, 5)->default(0);
             $table->float('soducu', 30, 5)->default(0);
             $table->float('sodumoi', 30,5)->default(0);
-            $table->datetime('ngaygiaodich');
+            $table->datetime('ngaygiaodich')->nullable();
             $table->string('ghichu')->nullable();
         });
     }

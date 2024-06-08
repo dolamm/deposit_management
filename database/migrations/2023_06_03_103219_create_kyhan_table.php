@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('makyhan')->unique();
             $table->string('tenkyhan');
-            $table->float('laisuat',6,3);
+            $table->float('laisuat',8,4);
             $table->boolean('giahan')->default(false)->comment('gia han khi den ngay dao han');
             $table->integer('thoigiannhanlai')->unsigned()->comment('don vi tinh la ngay');
-            $table->datetime('ngaytao');
-            $table->datetime('ngaycapnhat');
+            $table->datetime('ngaytao')->nullable();
+            $table->datetime('ngaycapnhat')->nullable();
         });
     }
 

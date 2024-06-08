@@ -49,7 +49,7 @@ class CalculateInterest extends Command
                 // $ngaydaohan = $s->ngaydaohan;
                 // $khongkyhan = Kyhan::find(1)->first();
                 // $check = $ngayhientai->diffInDays($ngaydaohan) % $khongkyhan->ngaytinhlai;
-                if($check >= 0){
+                if($check == 0){
                     $sotienlai = $s->sodu * $thongtinkyhan['laisuat'] /100  * $thongtinkyhan['thoigiannhanlai'] / 365;
                     PassBookHistory::create([
                         'sotietkiem_id' => $s->id,

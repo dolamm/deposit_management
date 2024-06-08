@@ -24,6 +24,8 @@ class Percent implements CastsAttributes
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
     {
+        // convert string to float
+        $value = (float) $value;
         return $value/100;
     }
 }

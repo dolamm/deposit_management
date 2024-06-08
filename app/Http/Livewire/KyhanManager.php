@@ -78,8 +78,8 @@ class KyhanManager extends Component
         'val.*.laisuat' => [
             'required',
             'numeric',
-            'min:1',
-            'max:100',
+            'min:1.00',
+            'max:100.00',
         ],
         'new_kyhan.makyhan' => 'required|unique:kyhan,makyhan',
         'new_kyhan.tenkyhan' => 'required',
@@ -109,7 +109,7 @@ class KyhanManager extends Component
         if(Gate::allows('kyhan-update')){
             $kyhan = kyhan::find($key);
             $kyhan->laisuat = $this->val[$key]['laisuat'];
-            $kyhan->thoigiannhanlai = $this->val[$key]['thoigiannhanlai'];
+            // $kyhan->thoigiannhanlai = $this->val[$key]['thoigiannhanlai'];
             $kyhan->save();
             $this->mount();
             $this->dispatchBrowserEvent(
