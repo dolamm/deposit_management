@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('laisuatcu');
             $table->float('laisuatmoi');
             $table->timestamps();
+            $table->foreign('kyhan_id')->references('id')->on('kyhan');
         });
     }
 

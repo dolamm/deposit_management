@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BankAccount extends Model
 {
     use HasFactory;
+    public $table = 'tk_nganhang';
     protected $fillable = ['balance'];
 
     public function user()

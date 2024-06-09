@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pass_book_histories', function (Blueprint $table) {
+        Schema::create('ls_sotietkiem', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('sotietkiem_id')->unsigned();
             $table->string('loaigd')->comment('loai hinh giao dich')->checkIn(['deposit', 'withdraw', 'interest']);
@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('sodumoi', 30,5)->default(0);
             $table->datetime('ngaygiaodich')->nullable();
             $table->string('ghichu')->nullable();
+            $table->foreign('sotietkiem_id')->references('id')->on('sotietkiem');
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pass_book_histories');
+        Schema::dropIfExists('ls_sotietkiem');
     }
 };

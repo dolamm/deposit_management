@@ -22,7 +22,7 @@ return new class extends Migration
             $table->datetime('ngaycapnhat')->nullable();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

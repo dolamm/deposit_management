@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bank_accounts', function (Blueprint $table) {
+        Schema::create('tk_nganhang', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
             $table->string('account_number')->unique();
             $table->float('balance', 30, 5)->default(0);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
         DB::unprepared('
@@ -27,7 +28,7 @@ return new class extends Migration
             set uid = NEW.id;
             select `phone` into acc_no from `users` where `id` = uid;
             insert into
-                `bank_accounts` (
+                `tk_nganhang` (
                     user_id,
                     account_number,
                     created_at)
@@ -41,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bank_accounts');
+        Schema::dropIfExists('tk_nganhang');
     }
 };

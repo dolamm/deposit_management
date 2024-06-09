@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('account_histories', function (Blueprint $table) {
+        Schema::create('ls_taikhoan', function (Blueprint $table) {
             $table->id();
             $table->string('account_number');
             //type deposit or withdraw == add or sub
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('amount', 30, 5)->default(0);
             $table->string('description', 255);
             $table->timestamps();
+            $table->foreign('account_number')->references('account_number')->on('tk_nganhang');
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('account_histories');
+        Schema::dropIfExists('ls_taikhoan');
     }
 };

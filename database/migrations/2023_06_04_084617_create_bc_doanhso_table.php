@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('tongthu',25,3)->default(0);
             $table->float('chenhlech',25,3)->nullable();
             $table->datetime('ngaytao');
+            $table->foreign('makyhan')->references('makyhan')->on('kyhan');
         });
     }
 

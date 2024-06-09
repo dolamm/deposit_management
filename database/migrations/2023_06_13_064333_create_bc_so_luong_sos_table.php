@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('sl_sodong')->default(0);
             $table->bigInteger('chenhlech')->nullable();
             $table->datetime('ngaytao');
+            $table->foreign('makyhan')->references('makyhan')->on('kyhan');
         });
     }
 

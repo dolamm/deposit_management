@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PassBookHistory extends Model
 {
     use HasFactory;
-
+    protected $table = 'ls_sotietkiem';
     const CREATED_AT = 'ngaygiaodich';
     const UPDATED_AT = null;
     const WITHDRAW = 'withdraw';

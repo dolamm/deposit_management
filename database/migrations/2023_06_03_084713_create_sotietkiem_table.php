@@ -25,6 +25,8 @@ return new class extends Migration
             $table->float('sodu', 30, 5)->default(0);
             $table->float('tienlai',30, 5)->default(0);
             $table->datetime('ngaydongso')->nullable()->default(null);
+            // foreign key ma ky han
+            $table->foreign('makyhan')->references('makyhan')->on('kyhan');
         });
     }
 

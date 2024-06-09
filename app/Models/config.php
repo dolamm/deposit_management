@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Config extends Model
 {
     use HasFactory;
-    protected $table = 'config';
+    protected $table = 'caidat_hethong';
     protected $fillable = [
         'key',
         'tengiatri',
